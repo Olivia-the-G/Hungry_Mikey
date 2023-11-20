@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speed Quiz</title>
+  <!-- Including Bootstrap for styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Linking the external CSS file -->
+  <link href="./assets/style.css" rel="stylesheet" type="text/css">
+  <!-- jQuery for simplified JavaScript coding -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+  <div class="container mt-5">
+    <!-- Main container where the quiz starts -->
+    <div id="home-container">
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome to the Speed Quiz</h1>
+            <p class="lead">Test your knowledge and compare your score with peers!</p>
+            <hr class="my-4">
+            <!-- Interaction buttons for the user to start the quiz or view high scores -->
+            <div class="text-center">
+                <button id="start-btn" class="btn btn-warning btn-lg" role="button">Start Quiz</button>
+                <button id="high-scores-btn" class="btn btn-secondary btn-lg" role="button">High Scores</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container for the quiz questions and timer; hidden by default -->
+    <div id="quiz-container" style="display: none;">
+        <div id="question-container" class="my-5"></div>
+        <div id="timer" class="timer">Time left: <span id="time">60</span> seconds</div>
+        <div id="result"></div>
+    </div>
+
+    <!-- Container for displaying the score after the quiz; hidden by default -->
+    <div id="score-container" style="display: none;">
+        <h2>Your score: <span id="final-score"></span></h2>
+        <input type="text" id="initials" placeholder="Enter initials" class="form-control mb-2">
+        <button id="submit-score" class="btn btn-dark">Submit Score</button>
+        <button id="restart-btn" class="btn btn-primary">Restart Quiz</button>
+    </div>
+
+    <!-- Container for high scores; hidden until the user chooses to view them -->
+    <div id="high-scores-container" style="display: none;">
+        <h2 id= "high-scores-title" class="mb-4">High Scores</h2>
+        <ul id="high-scores-list" class="list-group mb-4"></ul>
+        <button id="go-home-btn" class="btn btn-danger">Go Home</button>
+    </div>
+</div>
+</body>
+<!-- Linking the external JavaScript file -->
+<script src="./assets/script.js"></script>
+</html>
