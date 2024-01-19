@@ -33,7 +33,7 @@ Here are all of the collaborators who worked on this project
 - [Raaba Ahmad](https://github.com/raaba241)
 - [André Endique](https://github.com/ae-andre)
 - [John MacNeil](https://github.com/Temp-JohnM89)
-- [Patrick Lee](https://github.com/PaatL)
+- [Patrick Li](https://github.com/PaatL)
 
 ## License
 This application is under the MIT license. To see full license details, [click here](https://opensource.org/license/mit/)
