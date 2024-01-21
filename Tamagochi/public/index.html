@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tamagotchi</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        @keyframes blob {
+            
+        }
+
+        svg path {
+            animation: blob 5s infinite;
+        }
+
+        /* in-line syle */
+        #tamagotchi {
+            transition: width 0.5s, height 0.5s; /* transition for size changes */
+            display: block; 
+            margin: auto; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Tamagotchi</h1>
+
+    <!-- SVC img -->
+     <img id="tamagotchi" src="./Mikey Frames/Mikey Frame 1.svg" alt="Tamagotchi" />
+
+        <!-- Vomit button (which will be reused as "Feed Bad") -->
+    <div id="buttonContainer">
+    <!-- Vomit button (which will be reused as "Feed Bad") -->
+    <button id="vomitButton">Vomit All</button>
+
+    <!-- Other buttons with their respective IDs (e.g., feedButtonHealthy, feedButtonEmpty, feedButtonReveal) -->
+    <button id="feedButtonHealthy">Feed Healthy</button>
+    <button id="feedButtonEmpty">Feed Empty</button>
+    <button id="feedButtonReveal">Feed Reveal</button>
+</div>
+    <p id="status">Food Level: <span id="foodLevel">0</span></p>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>

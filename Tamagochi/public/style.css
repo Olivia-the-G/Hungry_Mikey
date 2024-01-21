@@ -1,0 +1,36 @@
+/* .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#tamagotchi.normal {
+    transform: rotate(0deg);
+}
+#tamagotchi.spinning {
+    animation: spin 2s infinite linear;
+}
+#tamagotchi.upside-down {
+    transform: rotate(180deg);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+.tamagotchi-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tamagotchi-button:hover {
+    background-color: #e7e7e7;
+} */
