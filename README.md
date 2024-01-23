@@ -32,7 +32,7 @@ Here are all of the collaborators who worked on this project
 - [Olivia Gowan](https://github.com/Olivia-the-G)
 - [Raaba Ahmad](https://github.com/raaba241)
 - [André Endique](https://github.com/ae-andre)
-- [John MacNeil](https://github.com/Temp-JohnM89)
+- [John MacNeil](https://github.com/JohnM89)+[Temp](https://github.com/Temp-JohnM89)
 - [Patrick Li](https://github.com/PaatL)
 
 ## License
