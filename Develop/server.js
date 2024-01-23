@@ -32,6 +32,16 @@ const sequelize = require('./config/connection');
 
 // ^ This is done in the connection.js file already
 
+const sequelize = require('./config/connection');
+
+// // Set up Sequelize with your MySQL database
+// const sequelize = new Sequelize('database', 'username', 'password', {
+//   host: 'localhost',
+//   dialect: 'mysql'
+// });
+
+// ^ This is done in the connection.js file already
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
