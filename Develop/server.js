@@ -34,7 +34,7 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 
 // Configure express-session middleware
 app.use(session({
-  secret: `${userPassword}` //user's password input goes here
+  secret: `${userPassword}`, //user's password input goes here
   resave: false,
   saveUninitialized: true,
   cookie: { secure: 'auto' }
@@ -72,7 +72,6 @@ app.get('/logout', (req, res) => {
 });
 
 // Set up server
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
