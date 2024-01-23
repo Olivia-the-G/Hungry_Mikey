@@ -36,13 +36,13 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
 
-// Configure express-session middleware
-app.use(session({
-  secret: `${user_password}`, //user's password input goes here
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: 'auto' }
-}));
+// // Configure express-session middleware
+// app.use(session({
+//   secret: `${user_password}`, //user's password input goes here
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: { secure: 'auto' }
+// }));
 
 // Authentication route
 router.post('/login', (req, res) => {
