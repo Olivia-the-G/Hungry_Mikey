@@ -32,27 +32,17 @@ const sequelize = require('./config/connection');
 
 // ^ This is done in the connection.js file already
 
-const sequelize = require('./config/connection');
-
-// // Set up Sequelize with your MySQL database
-// const sequelize = new Sequelize('database', 'username', 'password', {
-//   host: 'localhost',
-//   dialect: 'mysql'
-// });
-
-// ^ This is done in the connection.js file already
-
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
 
-// // Configure express-session middleware
-// app.use(session({
-//   secret: `${user_password}`, //user's password input goes here
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: { secure: 'auto' }
-// }));
+// Configure express-session middleware
+app.use(session({
+  secret: `${user_password}`, //user's password input goes here
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: 'auto' }
+}));
 
 // Authentication route
 router.post('/login', (req, res) => {
