@@ -36,7 +36,6 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
 
-<<<<<<< Updated upstream
 // // Configure express-session middleware
 // app.use(session({
 //   secret: `${user_password}`, //user's password input goes here
@@ -44,15 +43,6 @@ sequelize.sync({ force: false }).then(() => {
 //   saveUninitialized: true,
 //   cookie: { secure: 'auto' }
 // }));
-=======
-// Configure express-session middleware
-app.use(session({
-  secret: `${user_password}`, //user's password input goes here
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: 'auto' }
-}));
->>>>>>> Stashed changes
 
 // Authentication route
 router.post('/login', (req, res) => {
@@ -86,10 +76,6 @@ router.get('/logout', (req, res) => {
 });
 
 // Set up server
-<<<<<<< Updated upstream
 app.listen(PORT, () => {
-=======
-router.listen(PORT, () => {
->>>>>>> Stashed changes
   console.log(`Server running on port ${PORT}`);
 });
