@@ -4,7 +4,8 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const Sequelize = require('./config/connection');
-
+const mysql = require('mysql2');
+const router = require('express').Router();
 
 const hbs = exphbs.create({});
 const app = express();
@@ -21,15 +22,18 @@ app.set('view engine', 'handlebars');
 
 app.use(require('./controllers/'));
 
+const sequelize = require('./config/connection');
+
+// // Set up Sequelize with your MySQL database
+// const sequelize = new Sequelize('database', 'username', 'password', {
+//   host: 'localhost',
+//   dialect: 'mysql'
+// });
+
+// ^ This is done in the connection.js file already
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
-});
-
-
-// Set up Sequelize with your MySQL database
-const sequelize = new Sequelize('database', 'username', 'password', {
-  host: 'localhost',
-  dialect: 'mysql'
 });
 
 // Configure express-session middleware
@@ -41,7 +45,7 @@ app.use(session({
 }));
 
 // Authentication route
-app.post('/login', (req, res) => {
+router.post('/login', (req, res) => {
   const { username, password } = req.body;
   // logic to validate the user against the database
 
@@ -56,7 +60,7 @@ app.post('/login', (req, res) => {
 });
 
 // Dashboard route - Protected
-app.get('/dashboard', (req, res) => {
+router.get('/dashboard', (req, res) => {
   if (req.session.loggedin) {
     res.send(`${randomMickeyGreetingAudio}`); // need to set up var for pulling random audio rec greeting
   } else {
@@ -66,7 +70,7 @@ app.get('/dashboard', (req, res) => {
 });
 
 // Logout route
-app.get('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   req.session.destroy();
   res.send("You've been logged out");
 });
