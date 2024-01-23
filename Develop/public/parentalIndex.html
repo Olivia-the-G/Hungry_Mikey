@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Parental Control Switch</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
-    <h1>Welcome to the Parental Control Center</h1>
-    <p>Enable parental control  
-        <label class="switch">
-            <input id="parentalBtn" type="checkbox">
-            <span class="slider round"></span>
-          </label>
-    </p>
+    <h1>Parental Control Mode </h1>
+    <label class="switch">
+        <input type="checkbox" id="parentalControlSwitch">
+        <span class="slider round"></span>
+    </label>
 
-    
+    <div id="userInfo" style="display: none;">
+        <!-- User information will be displayed here -->
+    </div>
+
+    <script src="./parentalcontrol.js"></script>
 </body>
-
-<script src="/parentalcontrol.js"></script>
 </html>
