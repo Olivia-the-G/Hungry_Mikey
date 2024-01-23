@@ -1,0 +1,20 @@
+[
+  {
+    "user_name": "john_doe",
+    "user_password": "password123",
+    "hours_played": 10,
+    "date_joined": "2022-01-01"
+  },
+  {
+    "user_name": "jane_smith",
+    "user_password": "secret456",
+    "hours_played": 5,
+    "date_joined": "2022-02-15"
+  },
+  {
+    "user_name": "mike_johnson",
+    "user_password": "qwerty789",
+    "hours_played": 20,
+    "date_joined": "2022-03-10"
+  }
+]
