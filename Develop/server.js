@@ -4,9 +4,9 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const Sequelize = require('./config/connection');
-const brain = require('brain');
+const brain = require('brain.js');
 const mysql = require('mysql2');
-const router = ('express').Router();
+const router = require('express').Router();
 
 
 const hbs = exphbs.create({});
