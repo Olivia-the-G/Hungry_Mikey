@@ -261,55 +261,12 @@ app.use(require('./controllers/'));
 
 const sequelize = require('./config/connection');
 
-// // Set up Sequelize with your MySQL database
-// const sequelize = new Sequelize('database', 'username', 'password', {
-//   host: 'localhost',
-//   dialect: 'mysql'
-// });
-
-// ^ This is done in the connection.js file already
-
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
 
-// // Configure express-session middleware
-// app.use(session({
-//   secret: `${user_password}`, //user's password input goes here
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: { secure: 'auto' }
-// }));
-
-// Authentication route
-router.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  // logic to validate the user against the database
-
-  // Simulate user authentication
-  if(username === "testUser" && password === "testPassword") {
-    req.session.loggedin = true;
-    req.session.username = username;
-    res.redirect('/dashboard');
-  } else {
-    res.send('Incorrect Username and/or Password!');
-  }  
-});
-
-// Dashboard route - Protected
-router.get('/dashboard', (req, res) => {
-  if (req.session.loggedin) {
-    res.send(`${randomMickeyGreetingAudio}`); // need to set up var for pulling random audio rec greeting
-  } else {
-    res.send('Please login to view this page!');
-  }
-  res.end();
-});
-
-// Logout route
-router.get('/logout', (req, res) => {
-  req.session.destroy();
-  res.send("You've been logged out");
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.get('/', (req, res) => {
