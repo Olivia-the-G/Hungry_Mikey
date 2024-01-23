@@ -1,3 +1,8 @@
+
+
+
+
+
 document.getElementById('parentalControlSwitch').addEventListener('change', function() {
     let userInfoDiv = document.getElementById('userInfo');
     if(this.checked) {
