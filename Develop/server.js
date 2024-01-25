@@ -3,21 +3,23 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
-const helpers = require('./utils/helpers');
-// const brain = require('brain.js');
-// const mysql = require('mysql2');
-
 const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const brain = require('brain.js');
+const mysql = require('mysql2');
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const hbs = exphbs.create({});
+
+// function to read and parse game data from a JSON file
 const getData = () => {
   let data = fs.readFileSync('data.json');
   return JSON.parse(data);
 };
 
+// function to write data to a JSON file
 const saveData = (data) => {
   fs.writeFileSync('data.json', JSON.stringify(data));
 };
@@ -34,23 +36,23 @@ network.train(trainingData);
 
 // log entry to the data log file
 const appendToDataLog = (logEntry, dataLogFilePath) => {
-    let dataLog = [];
-    try {
-        dataLog = JSON.parse(fs.readFileSync(dataLogFilePath));
-    } catch (error) {
-        // if file doesn't exist or is empty
-    }
-    dataLog.push(logEntry);
-    fs.writeFileSync(dataLogFilePath, JSON.stringify(dataLog, null, 2));
+  let dataLog = [];
+  try {
+      dataLog = JSON.parse(fs.readFileSync(dataLogFilePath));
+  } catch (error) {
+      // if file doesn't exist or is empty
+  }
+  dataLog.push(logEntry);
+  fs.writeFileSync(dataLogFilePath, JSON.stringify(dataLog, null, 2));
 };
 
 // retrieve all logged data
 const getAllDataLogEntries = (dataLogFilePath) => {
-    try {
-        return JSON.parse(fs.readFileSync(dataLogFilePath));
-    } catch (error) {
-        return [];
-    }
+  try {
+      return JSON.parse(fs.readFileSync(dataLogFilePath));
+  } catch (error) {
+      return [];
+  }
 };
 
 // function to get image URLs from a folder
@@ -71,7 +73,8 @@ function getRandomImage(imageArray) {
   return imageArray[randomIndex];
 }
 
-
+// express middleware for serving static files from the public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // get random image URLs for each button type
 app.get('/getImageUrls', (req, res) => {
@@ -87,8 +90,6 @@ app.get('/getImageUrls', (req, res) => {
     reveal: getRandomImage(revealImages)
   });
 });
-
-
 
 // retrieve all logged data
 app.get('/getAllLoggedData', (req, res) => {
@@ -246,34 +247,23 @@ app.post('/feedBad', (req, res) => {
 });
 
 
-
-
 // express middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 // handlebars middleware
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.use(require('./controllers/'));
+// include routes from controllers
+app.use(routes);
 
-const sequelize = require('./config/connection');
-
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// Set up server
+// set up server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+});
+
+// turn on connection to db and server
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
 });
