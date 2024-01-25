@@ -1,6 +1,30 @@
 $(document).ready(function() {
     const $tamagotchiImg = $("#tamagotchi");
     const frames = ["../Mikey Frames/Mikey Frame 1.svg", "../Mikey Frames/Mikey Frame 2.svg", "../Mikey Frames/Mikey Frame 3.svg", "../Mikey Frames/Mikey Frame 4.svg", "../Mikey Frames/Mikey Frame 5.svg", "../Mikey Frames/Mikey Frame 6.svg"];
+    const healthySounds = [
+    "20181112_Quest Ding 01 ｜ Heroes of the Storm",
+    "20181112_Quest Ding 02 ｜ Heroes of the Storm",
+    "20160531_Cartoon Chomp Sound Effect"
+];
+const badSounds = [
+    "20210506_Windows Error (Sound effect)",
+    "20140323_Spongebob bleh SFX",
+    "20240115_WOMP WOMP (sound effect)"
+];
+const emptySounds = [
+    "20200426_Can sound effect",
+    "20230404_Empty bag crunching sound effect"
+];
+const revealSounds = [
+    "20230424_Dramatic Reveal Sound Effect",
+    "20211003_Appear Sound Effect",
+    "20230216_Magic Reveal Sound Effect"
+];
+
+let currentBadSoundIndex = 0;
+let currentHealthySoundIndex = 0;
+let currentEmptySoundIndex = 0;
+let currentRevealSoundIndex = 0;
     let frameIndex = 5;
     let repeatCount = 0;
     let animationInterval;
@@ -17,7 +41,35 @@ $(document).ready(function() {
         feedReveal: $('#feedButtonReveal').text(),
         feedBad: $('#feedButtonBad').text()
     };
+function playBadSound() {
+    const soundName = badSounds[currentBadSoundIndex];
+    currentBadSoundIndex = (currentBadSoundIndex + 1) % badSounds.length;
+    const soundPath = `/sounds/badSounds/${soundName}.webm`;
+    new Audio(soundPath).play();
+}
 
+function playEmptySound() {
+    const soundName = emptySounds[currentEmptySoundIndex];
+    currentEmptySoundIndex = (currentEmptySoundIndex + 1) % emptySounds.length;
+    const soundPath = `/sounds/emptySounds/${soundName}.webm`;
+    new Audio(soundPath).play();
+}
+
+function playRevealSound() {
+    const soundName = revealSounds[currentRevealSoundIndex];
+    currentRevealSoundIndex = (currentRevealSoundIndex + 1) % revealSounds.length;
+    const soundPath = `/sounds/revealSounds/${soundName}.webm`;
+    new Audio(soundPath).play();
+}
+
+
+
+function playHealthySound() {
+    const soundName = healthySounds[currentHealthySoundIndex];
+    currentHealthySoundIndex = (currentHealthySoundIndex + 1) % healthySounds.length;
+    const soundPath = `/sounds/healthySounds/${soundName}.webm`;
+    new Audio(soundPath).play();
+}
     function updateButtonImages() {
         $.get('/getImageUrls', function(data) {
             $('#feedButtonHealthy').html('<img src="' + data.healthy + '" alt="Feed Healthy">');
@@ -110,12 +162,14 @@ function postFeedAction(feedType) {
     const feedHealthy = function() {
         shuffleButtonsAndNames();
         postFeedAction('feedHealthy');
+        playHealthySound();
         
     };
 
     const feedEmpty = function() {
         const shuffledNames = shuffleButtonsAndNames();
         postFeedAction('feedEmpty');
+        playEmptySound();
     
     };
 
@@ -151,6 +205,7 @@ const feedReveal = function() {
     }, 5000); // 5 seconds
 
     postFeedAction('feedReveal');
+    playRevealSound();
 };
 
 
@@ -160,6 +215,7 @@ const feedReveal = function() {
     const feedBad = function() {
         const shuffledNames = shuffleButtonsAndNames();
         postFeedAction('feedBad');
+        playBadSound();
 
     };
 
@@ -202,4 +258,5 @@ const feedReveal = function() {
     }
 
     fetchStatus();
+
 });
