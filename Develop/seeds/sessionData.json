@@ -1,0 +1,29 @@
+[
+  {
+    "monday": "12",
+    "tuesday": "24",
+    "wednesday": "2224",
+    "thursday": "424",
+    "friday": "234",
+    "saturday": "3334",
+    "sunday": "3334"
+  },
+  {
+    "monday": "12",
+    "tuesday": "2",
+    "wednesday": "2224",
+    "thursday": "24",
+    "friday": "234",
+    "saturday": "334",
+    "sunday": "3334"
+  },
+  {
+    "monday": "12",
+    "tuesday": "24",
+    "wednesday": "224",
+    "thursday": "44",
+    "friday": "234",
+    "saturday": "3334",
+    "sunday": "34"
+  }
+]
