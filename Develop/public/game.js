@@ -174,12 +174,6 @@ function postFeedAction(feedType) {
   // ensure there are not multiple instances of tooltips
     $('.tooltip').remove();
 
-    let originalNames = {
-        feedHealthy: $('#feedButtonHealthy .button-label').text(),
-        feedEmpty: $('#feedButtonEmpty .button-label').text(),
-        feedReveal: $('#feedButtonReveal .button-label').text(),
-        feedBad: $('#feedButtonBad .button-label').text()
-};
 
     // tooltips for revealFoods function
     $('.button').each(function() {
@@ -235,6 +229,11 @@ function postFeedAction(feedType) {
             feedHealthy();
         }
     });
+
+    //redundant
+    // $(document).on('click', '#parentalControlsButton', function() {
+    //   redirectToParentalControls();
+    // });
 
     $('#feedButtonHealthy').on('click', feedHealthy);
     $('#feedButtonEmpty').on('click', feedEmpty);

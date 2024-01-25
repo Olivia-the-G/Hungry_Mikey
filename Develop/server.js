@@ -246,6 +246,11 @@ app.post('/feedBad', (req, res) => {
     res.json({ message: responseMessage, foodLevel: data.foodLevel, size: data.size, mood: data.mood });
 });
 
+// handlebar routes for returning to game
+app.get('/game', (req, res) => {
+    res.render('game', { title: 'Hungry Mikey' });
+});
+
 // handlebars routes for parental control page
 app.get('/parental-control', (req, res) => {
     res.render('parentalControl', { title: 'Parental Control Switch' });
