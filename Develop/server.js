@@ -287,5 +287,3 @@ sequelize.sync({ force: false }).then(() => {
 
 //     res.json({ message: responseMessage, foodLevel: data.foodLevel, size: data.size, mood: data.mood });
 // });
-
-
