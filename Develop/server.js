@@ -13,11 +13,13 @@ const hbs = exphbs.create({});
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// function to read and parse game data from a JSON file
 const getData = () => {
   let data = fs.readFileSync('data.json');
   return JSON.parse(data);
 };
 
+// function to write data to a JSON file
 const saveData = (data) => {
   fs.writeFileSync('data.json', JSON.stringify(data));
 };
@@ -70,8 +72,8 @@ function getRandomImage(imageArray) {
   const randomIndex = Math.floor(Math.random() * imageArray.length);
   return imageArray[randomIndex];
 }
-
-
+// express middleware for serving static files from the public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // get random image URLs for each button type
 app.get('/getImageUrls', (req, res) => {
@@ -88,6 +90,25 @@ app.get('/getImageUrls', (req, res) => {
   });
 });
 
+
+// route to serve the game page
+app.get('/game', (req, res) => {
+  const initialData = getData(); // function to get initial game data
+  const imageUrls = {
+    healthy: getRandomImage(getImageUrlsFromFolder('HealthyFood')),
+    empty: getRandomImage(getImageUrlsFromFolder('EmptyFood')),
+    bad: getRandomImage(getImageUrlsFromFolder('BadFood')),
+    reveal: getRandomImage(getImageUrlsFromFolder('RevealFood'))
+  };
+  // render the 'game' template with the initial data and image URLs
+  res.render('game', {
+    title: 'Tamagotchi Game',
+    foodLevel: initialData.foodLevel || 0,
+    size: initialData.size || 100, // default size, adjust as needed
+    mood: initialData.mood || 0.5, // default mood, adjust as needed
+    imageUrls: imageUrls
+  });
+});
 
 
 // retrieve all logged data
@@ -107,7 +128,7 @@ const predictMood = (input) => {
   return network.run(input);
 };
 
-
+// endpoint to feed Tamagotchi "Mikey"
 function postFeedAction(feedType) {
     $.post('/feed', { feedType: feedType }, function(data) {
         console.log(data);
@@ -257,23 +278,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+// include routes from controllers
 app.use(require('./controllers/'));
 
-const sequelize = require('./config/connection');
+// no longer needed due to handlebars
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
 
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// Set up server
+// set up server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+});
+
+// turn on connection to db and server
+const sequelize = require('./config/connection');
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
 });

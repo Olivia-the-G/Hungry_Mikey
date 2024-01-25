@@ -1,15 +1,23 @@
 {{!< main}}
 
 {{#*inline "_head"}}
+<!-- additional content -->
 {{/inline}}
 
 {{#*inline "_foot"}}
-    {{!-- <script src="script.js"></script> --}}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="script.js"></script>
 {{/inline}}
 
-<!-- Game content -->
+<!-- Hungry Mikey Game -->
 <h1>Hungry Mikey</h1>
-<img id="hungry mikey" src="./Mikey Frames/Mikey Frame 1.svg" alt="Hungry Mikey" />
+<img id="tamagotchi" src="./Mikey Frames/Mikey Frame 1.svg" alt="Hungry Mikey" />
 
-{{> foodButtons }}
+<div id="buttonContainer">
+    {{> feedButtonBad }}
+    {{> feedButtonHealthy }}
+    {{> feedButtonEmpty }}
+    {{> feedButtonReveal }}
+</div>
 
+<p id="status">Food Level: <span id="foodLevel">0</span></p>
