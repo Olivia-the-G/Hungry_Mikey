@@ -36,3 +36,19 @@
     z-index: 100;
     display: none; 
 }
+
+/*speed and how many times Mikey "spins" */
+.spinning {
+    animation: spin 1s linear 2;
+}
+
+/* display Mikey upside down */
+.upside-down {
+    transform: rotate(180deg);
+}
+
+/* keyframes for SVG spin animation  */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
