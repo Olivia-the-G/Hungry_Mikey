@@ -1,7 +1,7 @@
 $(document).ready(function() {
     const $tamagotchiImg = $("#tamagotchi");
     const frames = ["../Mikey Frames/Mikey Frame 1.svg", "../Mikey Frames/Mikey Frame 2.svg", "../Mikey Frames/Mikey Frame 3.svg", "../Mikey Frames/Mikey Frame 4.svg", "../Mikey Frames/Mikey Frame 5.svg", "../Mikey Frames/Mikey Frame 6.svg"];
-    const healthySounds = [
+const healthySounds = [
     "20181112_Quest Ding 01 ｜ Heroes of the Storm",
     "20181112_Quest Ding 02 ｜ Heroes of the Storm",
     "20160531_Cartoon Chomp Sound Effect"
@@ -35,59 +35,54 @@ let currentRevealSoundIndex = 0;
         feedReveal: "Feed Reveal",
         feedBad: "Feed Bad"
     };
-    let originalButtonNames = {
-        feedHealthy: $('#feedButtonHealthy').text(),
-        feedEmpty: $('#feedButtonEmpty').text(),
-        feedReveal: $('#feedButtonReveal').text(),
-        feedBad: $('#feedButtonBad').text()
-    };
-function playBadSound() {
-    const soundName = badSounds[currentBadSoundIndex];
-    currentBadSoundIndex = (currentBadSoundIndex + 1) % badSounds.length;
-    const soundPath = `/sounds/badSounds/${soundName}.webm`;
-    new Audio(soundPath).play();
+
+// functions to play sounds from arrays
+    function playBadSound() {
+        const soundName = badSounds[currentBadSoundIndex];
+        currentBadSoundIndex = (currentBadSoundIndex + 1) % badSounds.length;
+        const soundPath = `/sounds/badSounds/${soundName}.webm`;
+        new Audio(soundPath).play();
+}
+    function playEmptySound() {
+        const soundName = emptySounds[currentEmptySoundIndex];
+        currentEmptySoundIndex = (currentEmptySoundIndex + 1) % emptySounds.length;
+        const soundPath = `/sounds/emptySounds/${soundName}.webm`;
+        new Audio(soundPath).play();
+}
+    function playRevealSound() {
+        const soundName = revealSounds[currentRevealSoundIndex];
+        currentRevealSoundIndex = (currentRevealSoundIndex + 1) % revealSounds.length;
+        const soundPath = `/sounds/revealSounds/${soundName}.webm`;
+        new Audio(soundPath).play();
+}
+    function playHealthySound() {
+        const soundName = healthySounds[currentHealthySoundIndex];
+        currentHealthySoundIndex = (currentHealthySoundIndex + 1) % healthySounds.length;
+        const soundPath = `/sounds/healthySounds/${soundName}.webm`;
+        new Audio(soundPath).play();
 }
 
-function playEmptySound() {
-    const soundName = emptySounds[currentEmptySoundIndex];
-    currentEmptySoundIndex = (currentEmptySoundIndex + 1) % emptySounds.length;
-    const soundPath = `/sounds/emptySounds/${soundName}.webm`;
-    new Audio(soundPath).play();
-}
-
-function playRevealSound() {
-    const soundName = revealSounds[currentRevealSoundIndex];
-    currentRevealSoundIndex = (currentRevealSoundIndex + 1) % revealSounds.length;
-    const soundPath = `/sounds/revealSounds/${soundName}.webm`;
-    new Audio(soundPath).play();
-}
-
-
-
-function playHealthySound() {
-    const soundName = healthySounds[currentHealthySoundIndex];
-    currentHealthySoundIndex = (currentHealthySoundIndex + 1) % healthySounds.length;
-    const soundPath = `/sounds/healthySounds/${soundName}.webm`;
-    new Audio(soundPath).play();
-}
+// function to update button images
     function updateButtonImages() {
         $.get('/getImageUrls', function(data) {
-            $('#feedButtonHealthy').html('<img src="' + data.healthy + '" alt="Feed Healthy">');
-            $('#feedButtonEmpty').html('<img src="' + data.empty + '" alt="Feed Empty">');
-            $('#feedButtonBad').html('<img src="' + data.bad + '" alt="Feed Bad">');
-            $('#feedButtonReveal').html('<img src="' + data.reveal + '" alt="Feed Reveal">');
+            // added a timestamp to prevent caching
+            $('#feedButtonHealthy').html('<img src="' + data.healthy + '?v=' + Date.now() + '" alt="Feed Healthy">');
+            $('#feedButtonEmpty').html('<img src="' + data.empty + '?v=' + Date.now() + '" alt="Feed Empty">');
+            $('#feedButtonBad').html('<img src="' + data.bad + '?v=' + Date.now() + '" alt="Feed Bad">');
+            $('#feedButtonReveal').html('<img src="' + data.reveal + '?v=' + Date.now() + '" alt="Feed Reveal">');
         });
-    }
+}
 
-    //update button images
+    
     updateButtonImages();
 
-function shuffleButtonsAndNames() {
-    const buttonContainer = $("#buttonContainer");
-    const buttons = buttonContainer.children();
-    const names = Object.values(buttonNames);
+// function to shuffle buttons and names
+    function shuffleButtonsAndNames() {
+        const buttonContainer = $("#buttonContainer");
+        const buttons = buttonContainer.children();
+        const names = Object.values(buttonNames);
 
-    // Shuffle the order of buttons
+    // shuffle the order of buttons in array
     for (let i = buttons.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         buttonContainer.append(buttons[j]);
@@ -101,7 +96,7 @@ function shuffleButtonsAndNames() {
     
 }
 
-
+// function to start Mikey's animation
     function startAnimation() {
         if (!animationEnabled) return;
 
@@ -127,7 +122,7 @@ function shuffleButtonsAndNames() {
         }, repeatCount === 0 ? 200 : 133);
         animationEnabled = false;
     }
-
+// function to stop Mikey's animation
     function stopAnimation() {
         clearInterval(animationInterval);
         animationEnabled = true;
@@ -160,20 +155,22 @@ function postFeedAction(feedType) {
 
 
     const feedHealthy = function() {
-        shuffleButtonsAndNames();
-        postFeedAction('feedHealthy');
-        playHealthySound();
-        
-    };
+    shuffleButtonsAndNames();
+    postFeedAction('feedHealthy');
+    playHealthySound();
+    updateButtonImages();
+};
 
     const feedEmpty = function() {
         const shuffledNames = shuffleButtonsAndNames();
         postFeedAction('feedEmpty');
         playEmptySound();
+        updateButtonImages();
     
-    };
+    
+};
 
-const feedReveal = function() {
+    const feedReveal = function() {
   // ensure there are not multiple instances of tooltips
     $('.tooltip').remove();
 
@@ -182,7 +179,7 @@ const feedReveal = function() {
         feedEmpty: $('#feedButtonEmpty .button-label').text(),
         feedReveal: $('#feedButtonReveal .button-label').text(),
         feedBad: $('#feedButtonBad .button-label').text()
-    };
+};
 
     // tooltips for revealFoods function
     $('.button').each(function() {
@@ -190,7 +187,7 @@ const feedReveal = function() {
         const $tooltip = $('<span class="tooltip" style="display: none;">' + tooltipText + '</span>');
         $(this).append($tooltip);
         $tooltip.fadeIn();
-    });
+});
 
     console.log('Tooltips added');
 
@@ -205,7 +202,8 @@ const feedReveal = function() {
     }, 5000); // 5 seconds
 
     postFeedAction('feedReveal');
-    playRevealSound();
+     playRevealSound();
+    
 };
 
 
@@ -216,6 +214,8 @@ const feedReveal = function() {
         const shuffledNames = shuffleButtonsAndNames();
         postFeedAction('feedBad');
         playBadSound();
+        updateButtonImages();
+        
 
     };
 
@@ -229,7 +229,7 @@ const feedReveal = function() {
         }
     }
 
-
+    // cheat code to eat healthy
     $(document).on('keydown', function(event) {
         if (event.key === 'f' || event.key === 'F') {
             feedHealthy();
@@ -258,5 +258,4 @@ const feedReveal = function() {
     }
 
     fetchStatus();
-
 });
