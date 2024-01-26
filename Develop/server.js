@@ -246,6 +246,16 @@ app.post('/feedBad', (req, res) => {
     res.json({ message: responseMessage, foodLevel: data.foodLevel, size: data.size, mood: data.mood });
 });
 
+// handlebar routes for returning to game
+app.get('/game', (req, res) => {
+    res.render('game', { title: 'Hungry Mikey' });
+});
+
+// handlebars routes for parental control page
+app.get('/parental-control', (req, res) => {
+    res.render('parentalControl', { title: 'Parental Control Switch' });
+});
+
 
 // express middleware
 app.use(express.json());
@@ -257,11 +267,6 @@ app.set('view engine', 'handlebars');
 
 // include routes from controllers
 app.use(routes);
-
-// set up server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {

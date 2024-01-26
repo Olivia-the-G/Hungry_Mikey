@@ -1,23 +1,39 @@
 {{!< main}}
 
 {{#*inline "_head"}}
-<!-- additional content -->
+<link rel="stylesheet" href="/css/style.css"> 
 {{/inline}}
 
-{{#*inline "_foot"}}
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="script.js"></script>
-{{/inline}}
+    <style>
+        @keyframes blob {
+            
+        }
 
-<!-- Hungry Mikey Game -->
+        svg path {
+            animation: blob 5s infinite;
+        }
+
+        /* in-line syle */
+        #tamagotchi {
+            transition: width 0.5s, height 0.5s; 
+            margin: auto; 
+        }
+    </style>
+    
 <h1>Hungry Mikey</h1>
-<img id="tamagotchi" src="./Mikey Frames/Mikey Frame 1.svg" alt="Hungry Mikey" />
+<img id="tamagotchi" src="/Mikey Frames/Mikey Frame 1.svg" alt="Hungry Mikey" />
 
 <div id="buttonContainer">
     {{> feedButtonBad }}
     {{> feedButtonHealthy }}
     {{> feedButtonEmpty }}
     {{> feedButtonReveal }}
+    {{> parentalControlsButton }} <!-- This button will link to parental controls -->
 </div>
 
 <p id="status">Food Level: <span id="foodLevel">0</span></p>
+
+{{#*inline "_foot"}}
+
+<script src="path/to/specific-script.js"></script>
+{{/inline}}
