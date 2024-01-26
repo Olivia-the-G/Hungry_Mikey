@@ -12,6 +12,7 @@
 Hungry Mikey is an **interactive game for children ages (age range here)** that helps them to learn about nutritional values and eating a balanced diet. 
 
 Using this game, kids will be able to choose from some options what they would like Mikey to eat, and then receive **adaptive feedback based on their choices**. 
+Mikey's daily food preference is 
 
 This feedback is **powered by AI** in order to provide new reactions every time. 
 
@@ -21,7 +22,7 @@ Hungry Mikey makes use of characters from the **Disney short film "Steamboat Wil
 This game is going to be deployed on Heroku. To play it you can visit the url found here -->
 
 ## Features
-
+This game uses features such as stored server side data to allow parents to have access to information such as how long their child has been playing in a day.
 ## Credits
 
 Here are all of the collaborators who worked on this project
