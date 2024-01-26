@@ -1,5 +1,7 @@
 # Hungry_Mikey [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square&link=https%3A%2F%2Fopensource.org%2Flicense%2Fmit%2F)](https://opensource.org/license/mit/)
 
+![Steamboat Willie riverboat image](Develop/public/images/Steamboat_Willie_banner.jpg)
+
 ## Table of Contents
 
 - [Description](#description)
