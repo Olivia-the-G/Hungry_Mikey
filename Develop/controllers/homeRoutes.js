@@ -69,12 +69,12 @@ router.get('/login', (req, res) => {
 });
 
 // handlebar routes for returning to game
-app.get('/game', (req, res) => {
+router.get('/game', (req, res) => {
   res.render('game', { title: 'Hungry Mikey' });
 });
 
 // handlebars routes for parental control page
-app.get('/parental-control', (req, res) => {
+router.get('/parental-control', (req, res) => {
   res.render('parentalControl', { title: 'Parental Control Switch' });
 });
 
