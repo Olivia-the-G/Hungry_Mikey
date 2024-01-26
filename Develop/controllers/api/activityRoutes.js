@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Session } = require('../../models');
+const { Activity } = require('../../models');
 
 
   

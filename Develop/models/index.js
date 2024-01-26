@@ -1,13 +1,13 @@
 const User = require('./User');
-const Session = require('./Session');
+const Activity = require('./Activity');
 
-User.hasMany(Session, {
+User.hasMany(Activity, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
   });
 
-Session.belongsTo(User, {
+Activity.belongsTo(User, {
     foreignKey: 'user_id'
   });
 
-module.exports = { User, Session };
+module.exports = { User, Activity };

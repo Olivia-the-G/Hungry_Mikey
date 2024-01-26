@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const userRoutes = require('./userRoutes');
-const sessionRoutes = require('./sessionRoutes');
+const activityRoutes = require('./activityRoutes');
 const buttonRoutes = require('./buttonRoutes');
 
 router.use('/buttons', buttonRoutes);
 router.use('/users', userRoutes);
-router.use('/session', sessionRoutes);
+router.use('/activity', activityRoutes);
 
 module.exports = router;
