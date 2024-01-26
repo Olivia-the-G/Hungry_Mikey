@@ -1,2 +1,3 @@
 DROP DATABASE IF EXISTS mikey_db;
+
 CREATE DATABASE mikey_db;
