@@ -13,6 +13,20 @@ const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({});
 
+// express middleware for serving static files from the public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+// express middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// handlebars middleware
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+// include routes from controllers
+app.use(routes);
+
 // function to read and parse game data from a JSON file
 const getData = () => {
   let data = fs.readFileSync('data.json');
@@ -73,9 +87,6 @@ function getRandomImage(imageArray) {
   return imageArray[randomIndex];
 }
 
-// express middleware for serving static files from the public folder
-app.use(express.static(path.join(__dirname, 'public')));
-
 // get random image URLs for each button type
 app.get('/getImageUrls', (req, res) => {
   const healthyImages = getImageUrlsFromFolder('HealthyFood');
@@ -89,18 +100,6 @@ app.get('/getImageUrls', (req, res) => {
     bad: getRandomImage(badImages),
     reveal: getRandomImage(revealImages)
   });
-});
-
-// retrieve all logged data
-app.get('/getAllLoggedData', (req, res) => {
-    const loggedData = getAllDataLogEntries('dataFeedLog.json');
-    res.json(loggedData);
-});
-
-// get Tamagotchi status
-app.get('/status', (req, res) => {
-  const data = getData();
-  res.json(data);
 });
 
 // predict mood
@@ -117,18 +116,6 @@ function postFeedAction(feedType) {
         updateTamagotchiMood(data.mood);
     }, 'json');
 }
-
-
-// express middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// handlebars middleware
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-
-// include routes from controllers
-app.use(routes);
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {

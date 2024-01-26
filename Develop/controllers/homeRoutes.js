@@ -78,6 +78,12 @@ router.get('/parental-control', (req, res) => {
   res.render('parentalControl', { title: 'Parental Control Switch' });
 });
 
+// get Tamagotchi status
+router.get('/status', (req, res) => {
+  const data = getData();
+  res.json(data);
+});
+
 module.exports = router;
 
 
