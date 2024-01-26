@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 // endpoint to feed healthy
-app.post('/feedHealthy', (req, res) => {
+router.post('/feedHealthy', (req, res) => {
   let data = getData();
   data.foodLevel = (data.foodLevel || 0) + 5;
   data.size = (data.size || 0) + 1;
@@ -40,7 +40,7 @@ app.post('/feedHealthy', (req, res) => {
 
 
 // endpoint to feed empty
-app.post('/feedEmpty', (req, res) => {
+router.post('/feedEmpty', (req, res) => {
   let data = getData();
 
   // check if the Tamagotchi has any food level left
@@ -69,7 +69,7 @@ app.post('/feedEmpty', (req, res) => {
 
 
 // endpoint to feed reveal
-app.post('/feedReveal', (req, res) => {
+router.post('/feedReveal', (req, res) => {
   let data = getData();
   data.size = (data.size || 0);
 
@@ -91,7 +91,7 @@ app.post('/feedReveal', (req, res) => {
 
 
 // endpoint to feed bad
-app.post('/feedBad', (req, res) => {
+router.post('/feedBad', (req, res) => {
   let data = getData();
 
   // update food level and size
@@ -126,3 +126,5 @@ app.post('/feedBad', (req, res) => {
 
   res.json({ message: responseMessage, foodLevel: data.foodLevel, size: data.size, mood: data.mood });
 });
+
+module.exports = router;
