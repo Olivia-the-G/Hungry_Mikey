@@ -1,15 +1,39 @@
 {{!< main}}
 
 {{#*inline "_head"}}
+<link rel="stylesheet" href="/css/style.css"> 
 {{/inline}}
+
+    <style>
+        @keyframes blob {
+            
+        }
+
+        svg path {
+            animation: blob 5s infinite;
+        }
+
+        /* in-line syle */
+        #tamagotchi {
+            transition: width 0.5s, height 0.5s; 
+            margin: auto; 
+        }
+    </style>
+    
+<h1>Hungry Mikey</h1>
+<img id="tamagotchi" src="/Mikey Frames/Mikey Frame 1.svg" alt="Hungry Mikey" />
+
+<div id="buttonContainer">
+    {{> feedButtonBad }}
+    {{> feedButtonHealthy }}
+    {{> feedButtonEmpty }}
+    {{> feedButtonReveal }}
+    {{> parentalControlsButton }} <!-- This button will link to parental controls -->
+</div>
+
+<p id="status">Food Level: <span id="foodLevel">0</span></p>
 
 {{#*inline "_foot"}}
-    {{!-- <script src="script.js"></script> --}}
+
+<script src="path/to/specific-script.js"></script>
 {{/inline}}
-
-<!-- Game content -->
-<h1>Hungry Mikey</h1>
-<img id="hungry mikey" src="./Mikey Frames/Mikey Frame 1.svg" alt="Hungry Mikey" />
-
-{{> foodButtons }}
-

@@ -1,0 +1,18 @@
+{{!< main}}
+
+{{#*inline "_head"}}
+<link rel="stylesheet" href="/css/parentalstyle.css">
+{{/inline}}
+
+<h1>Parental Control Mode</h1>
+<label class="switch">
+    <input type="checkbox" id="parentalControlSwitch">
+    <span class="slider round"></span>
+</label>
+
+<div id="userInfo" style="display: none;">
+</div>
+
+<div id="buttonContainer">
+    {{> returnToGame}}
+</div>
