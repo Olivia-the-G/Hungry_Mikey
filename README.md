@@ -5,7 +5,6 @@
 - [Description](#description)
 - [Usage](#usage)
 - [Features](#features)
-- [Tests](#tests)
 - [Credits](#credits)
 - [License](#license)
 
@@ -22,9 +21,6 @@ Hungry Mikey makes use of characters from the **Disney short film "Steamboat Wil
 This game is going to be deployed on Heroku. To play it you can visit the url found here -->
 
 ## Features
-
-## Tests
-Put tests here
 
 ## Credits
 
