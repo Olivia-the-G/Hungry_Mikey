@@ -8,16 +8,40 @@ const brain = require('brain.js');
 const mysql = require('mysql2');
 const fs = require('fs');
 
+
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({});
-
+// express middleware for serving static files from the public folder
+app.use(express.static(path.join(__dirname, 'public')));
 // function to read and parse game data from a JSON file
+
+// express middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// handlebars middleware
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+// include routes from controllers
+app.use(routes);
 const getData = () => {
   let data = fs.readFileSync('data.json');
   return JSON.parse(data);
 };
+
+// Explicit routes for Mikey frames
+app.get('/images/Mikey_Frames/Mikey_Frame_1.svg', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'images', 'Mikey_Frames', 'Mikey_Frame_1.svg'));
+});
+
+app.get('/images/Mikey_Frames/Mikey_Frame_2.svg', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'images', 'Mikey_Frames', 'Mikey_Frame_2.svg'));
+});
+
 
 // function to write data to a JSON file
 const saveData = (data) => {
@@ -55,6 +79,14 @@ const getAllDataLogEntries = (dataLogFilePath) => {
   }
 };
 
+// New route in server.js to fetch specific Mikey frame image URL
+// app.get('/getMikeyFrameImageUrl/:frameNumber', (req, res) => {
+//     const frameNumber = req.params.frameNumber;
+//     const imagePath = `/images/Mikey_Frames/Mikey_Frame_${frameNumber}.svg`;
+//     res.json({ url: imagePath });
+// });
+
+
 // function to get image URLs from a folder
 function getImageUrlsFromFolder(folderName) {
   const directoryPath = path.join(__dirname, 'public', 'images', folderName);
@@ -67,6 +99,8 @@ function getImageUrlsFromFolder(folderName) {
   }
 }
 
+
+
 // function to randomly select an image from an array
 function getRandomImage(imageArray) {
   const randomIndex = Math.floor(Math.random() * imageArray.length);
@@ -74,7 +108,7 @@ function getRandomImage(imageArray) {
 }
 
 // express middleware for serving static files from the public folder
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // get random image URLs for each button type
 app.get('/getImageUrls', (req, res) => {
@@ -258,15 +292,15 @@ app.get('/parental-control', (req, res) => {
 
 
 // express middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
 // handlebars middleware
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+// app.engine('handlebars', hbs.engine);
+// app.set('view engine', 'handlebars');
 
 // include routes from controllers
-app.use(routes);
+// app.use(routes);
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {

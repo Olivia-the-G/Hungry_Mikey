@@ -1,10 +1,9 @@
-{{!< main}}
-
-{{#*inline "_head"}}
-<link rel="stylesheet" href="/css/style.css"> 
-{{/inline}}
-
-    <style>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hungry Mikey</title>
+    <link rel="stylesheet" href="/css/style.css">
+    {{!-- <style>
         @keyframes blob {
             
         }
@@ -13,27 +12,45 @@
             animation: blob 5s infinite;
         }
 
-        /* in-line syle */
+        /* in-line style */
         #tamagotchi {
             transition: width 0.5s, height 0.5s; 
             margin: auto; 
         }
-    </style>
-    
-<h1>Hungry Mikey</h1>
-<img id="tamagotchi" src="/Mikey Frames/Mikey Frame 1.svg" alt="Hungry Mikey" />
+    </style> --}}
+</head>
+<body>
+    <h1>Hungry Mikey</h1>
 
+<img id="tamagotchi" src="/images/Mikey Frames/Mikey Frame 1.svg" alt="Tamagotchi" />
+
+    
 <div id="buttonContainer">
-    {{> feedButtonBad }}
-    {{> feedButtonHealthy }}
-    {{> feedButtonEmpty }}
-    {{> feedButtonReveal }}
-    {{> parentalControlsButton }} <!-- This button will link to parental controls -->
+    <button id="feedButtonBad" class="button" data-title="Feed Bad">
+        <span class="button-label">Feed Bad</span>
+    </button>
+
+    <button id="feedButtonHealthy" class="button" data-title="Feed Healthy">
+        <span class="button-label">Feed Healthy</span>
+    </button>
+
+    <button id="feedButtonEmpty" class="button" data-title="Feed Empty">
+        <span class="button-label">Feed Empty</span>
+    </button>
+
+    <button id="feedButtonReveal" class="button" data-title="Feed Reveal">
+        <span class="button-label">Feed Reveal</span>
+    </button>
 </div>
 
-<p id="status">Food Level: <span id="foodLevel">0</span></p>
 
-{{#*inline "_foot"}}
 
-<script src="path/to/specific-script.js"></script>
-{{/inline}}
+    <p id="status">Food Level: <span id="foodLevel">0</span></p>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="/js/game.js"></script>
+
+
+</body>
+</html>

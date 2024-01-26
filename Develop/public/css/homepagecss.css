@@ -52,18 +52,3 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
-/*keyframes for SVG blob animation */
-@keyframes blob {
-    
-}
-
-svg path {
-    animation: blob 5s infinite;
-}
-
-/* in-line style */
-#tamagotchi {
-    transition: width 0.5s, height 0.5s; 
-    margin: auto; 
-}

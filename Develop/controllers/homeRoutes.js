@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+
 //http://localhost:3001/parent/1
 router.get('/parent/:id', async (req, res) => {
   try {
@@ -36,6 +37,7 @@ router.get('/parent/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 //http://localhost:3001/profile
 // Use withAuth middleware to prevent access to route
@@ -67,6 +69,7 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
 
 module.exports = router;
 
