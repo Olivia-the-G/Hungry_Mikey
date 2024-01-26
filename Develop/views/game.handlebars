@@ -24,16 +24,26 @@
 <img id="tamagotchi" src="/Mikey Frames/Mikey Frame 1.svg" alt="Hungry Mikey" />
 
 <div id="buttonContainer">
-    {{> feedButtonBad }}
-    {{> feedButtonHealthy }}
-    {{> feedButtonEmpty }}
-    {{> feedButtonReveal }}
-    {{> parentalControlsButton }} <!-- This button will link to parental controls -->
+    <button id="feedButtonBad" class="button" data-title="Feed Bad">
+        <span class="button-label">Feed Bad</span>
+    </button>
+
+    <button id="feedButtonHealthy" class="button" data-title="Feed Healthy">
+        <span class="button-label">Feed Healthy</span>
+    </button>
+
+    <button id="feedButtonEmpty" class="button" data-title="Feed Empty">
+        <span class="button-label">Feed Empty</span>
+    </button>
+
+    <button id="feedButtonReveal" class="button" data-title="Feed Reveal">
+        <span class="button-label">Feed Reveal</span>
+    </button>
 </div>
 
 <p id="status">Food Level: <span id="foodLevel">0</span></p>
 
 {{#*inline "_foot"}}
 
-<script src="path/to/public/game.js"></script>
+<script src="/js/game.js"></script>
 {{/inline}}
