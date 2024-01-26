@@ -12,7 +12,7 @@
 Hungry Mikey is an **interactive game for children ages (age range here)** that helps them to learn about nutritional values and eating a balanced diet. 
 
 Using this game, kids will be able to choose from some options what they would like Mikey to eat, and then receive **adaptive feedback based on their choices**. 
-Mikey's daily food preference is 
+Mikey's daily food preference is changed often, so check back often to know what Mikey prefers on a day to day basis!
 
 This feedback is **powered by AI** in order to provide new reactions every time. 
 
