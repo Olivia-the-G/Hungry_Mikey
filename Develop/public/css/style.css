@@ -1,8 +1,111 @@
-.button-container {
+* {
+    /* outline: black solid 2px; */
+}
+
+header {
+    width: 600px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-bottom: 10px double black;
+}
+
+main {
+    width: 550px;
+    height: 600px;
+    padding: 20px;
+    margin: 40px;
+}
+
+#homepage-main {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin: 10px;
     justify-content: center;
+}
+
+#home-button-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#welcome-mikey {
+    outline: black double 10px;
+    border-radius: 8%;
+    box-shadow: 5px 5px 10px;
+    margin: 15px;
+}
+
+#randomStatement {
+    font-family: "Single Day", cursive;
+    font-size: 30px;
+    overflow: hidden;
+    border-right: 1px solid #000;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 2px;
+    animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #000; }
+}
+
+/* GAME WINDOW BORDER ON GAME PAGE */
+#mikey-border {
+    outline: black double 10px;
+    border-radius: 8%;
+    box-shadow: 5px 5px 10px;
+    margin: 15px;
+}
+
+/* RETURN HOME BUTTON ON GAME PAGE */
+#return-home {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
     margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+/* FOOD BUTTONS ON GAME PAGE */
+.feed-image {
+    height: 80px;
+}
+
+/* FOOD BUTTON CONTAINER */
+#buttonContainer {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+/* SPACING OF FOOD BUTTONS ON GAME PAGE */
+.button {
+    border: 10px double #000000;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px;
+    margin: 5px;
+    
+}
+
+.login-buttons {
+    background-color: rgb(13, 43, 164);
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight:800;
+    padding: 10px;
+}
+
+#signup-container {
+    border: 10px double #000000;
+    box-shadow: 2px 2px 5px;
 }
 
 .tamagotchi-button {
@@ -19,12 +122,7 @@
     background-color: #e7e7e7;
 }
 
-.button {
-    position: relative;
-}
-
 .tooltip {
-    position: relative;
     top: 100%; 
     transform: translateX(-50%); 
     background-color: black;
@@ -34,7 +132,7 @@
     font-size: 12px;
     white-space: nowrap;
     z-index: 100;
-    display: none; 
+    /* display: none;  REMOVED TO PREVENT CONFLICT*/
 }
 
 /*speed and how many times Mikey "spins" */

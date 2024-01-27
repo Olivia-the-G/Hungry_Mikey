@@ -8,28 +8,22 @@
   <link rel="icon" type="image/x-icon" href="../../images/favicon/favicon.ico">
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Single+Day&family=Sixtyfour&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <a href="/">Hungry Mikey</a>
+  <div>
+    <header>
+      <h1 class="h-2">
+        <img id="logo" src="../../images/logo.png">
       </h1>
       <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/logout">
-        <button type="button" id="logout">logout</button>
-        </a>
-        {{else}}
-        <a href="/login">
-        <button type="button">login</button>
-        </a>
-        {{/if}}
+{{!-- empty nav for now --}}
       </nav>
     </header>
-    <main class="container container-fluid mt-5">
+    <main>
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
