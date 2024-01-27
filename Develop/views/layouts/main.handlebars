@@ -18,10 +18,13 @@
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/game">play with mikey</a>
-        <button class="no-button" id="logout">logout</button>
+        <a href="/logout">
+        <button type="button" id="logout">logout</button>
+        </a>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">
+        <button type="button">login</button>
+        </a>
         {{/if}}
       </nav>
     </header>

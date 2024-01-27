@@ -7,6 +7,7 @@ const sequelize = require('./config/connection');
 const brain = require('brain.js');
 const mysql = require('mysql2');
 const fs = require('fs');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -118,6 +119,22 @@ function postFeedAction(feedType) {
     }, 'json');
 }
 
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {
+    maxAge: 300000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
 
 // express middleware
 app.use(express.json());
