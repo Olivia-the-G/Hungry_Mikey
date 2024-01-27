@@ -1,11 +1,23 @@
 <body>
-
+<div>
     <h1>Welcome To Hungry Mikey</h1>
     <img id="tamagotchi" src="../images/Mikey Frames/Mikey Frame 1.svg" alt="Tamagotchi" />
-    
+</div>
+<div>
     <a href="/game">
         <button type="button">Play With Mikey</button>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/logout">
+        <button type="button" id="logout">logout</button>
+        </a>
+        {{else}}
+        <a href="/login">
+        <button type="button">login</button>
+        </a>
+        {{/if}}
     </a>
+</div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script src="script.js"></script>
