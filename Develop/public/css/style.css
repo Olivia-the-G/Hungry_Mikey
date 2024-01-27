@@ -35,6 +35,27 @@ main {
     margin: 15px;
 }
 
+#randomStatement {
+    font-family: "Single Day", cursive;
+    font-size: 30px;
+    overflow: hidden;
+    border-right: 1px solid #000;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 2px;
+    animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #000; }
+}
+
 /* GAME WINDOW BORDER ON GAME PAGE */
 #mikey-border {
     outline: black double 10px;
@@ -61,7 +82,7 @@ main {
 #buttonContainer {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
 }
 
 /* SPACING OF FOOD BUTTONS ON GAME PAGE */
@@ -69,7 +90,7 @@ main {
     border: 10px double #000000;
     border-radius: 50%;
     box-shadow: 2px 2px 5px;
-    margin: 10px;
+    margin: 5px;
     
 }
 
@@ -80,6 +101,11 @@ main {
     font-size: 18px;
     font-weight:800;
     padding: 10px;
+}
+
+#signup-container {
+    border: 10px double #000000;
+    box-shadow: 2px 2px 5px;
 }
 
 .tamagotchi-button {
