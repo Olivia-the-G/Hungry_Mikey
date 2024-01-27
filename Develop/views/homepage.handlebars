@@ -3,10 +3,7 @@
     <h1>AI GENERATED GREETING HERE</h1>
     <img id="welcome-mikey" src="../images/Mikey Gifs/homepage.gif" alt="cartoon mouse" />
 </div>
-<div>
-    <a href="/game">
-    <img id="play-button" class="custom-button" src="../images/Buttons/play button.png">
-    </a>
+<div id="home-button-container">
     <!-- Conditionally render login or logout links -->
     {{#if logged_in}}
     <a href="/logout">
@@ -14,9 +11,12 @@
     </a>
     {{else}}
     <a href="/login">
-    <img id="login-button" class="custom-button" src="../images/Buttons/login.png">
+    <img id="login-button" class="custom-button" src="../images/Buttons/login-home.png">
     </a>
     {{/if}}
+    <a href="/game">
+    <img id="play-button" class="custom-button" src="../images/Buttons/play button.png">
+    </a>
     
 </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

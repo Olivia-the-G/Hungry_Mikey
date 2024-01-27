@@ -1,32 +1,85 @@
 * {
-    outline: black solid 2px;
+    /* outline: black solid 2px; */
+}
+
+header {
+    width: 600px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-bottom: 10px double black;
 }
 
 main {
     width: 550px;
     height: 600px;
-    padding: 10px;
-    margin: 10px;
+    padding: 20px;
+    margin: 40px;
 }
 
 #homepage-main {
     display: flex;
+    flex-direction: column;
     margin: 10px;
     justify-content: center;
 }
 
-.custom-button:hover {
+#home-button-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#welcome-mikey {
+    outline: black double 10px;
+    border-radius: 8%;
+    box-shadow: 5px 5px 10px;
+    margin: 15px;
+}
+
+/* GAME WINDOW BORDER ON GAME PAGE */
+#mikey-border {
+    outline: black double 10px;
+    border-radius: 8%;
+    box-shadow: 5px 5px 10px;
+    margin: 15px;
+}
+
+/* RETURN HOME BUTTON ON GAME PAGE */
+#return-home {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+/* FOOD BUTTONS ON GAME PAGE */
+.feed-image {
+    height: 80px;
+}
+
+/* FOOD BUTTON CONTAINER */
+#buttonContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+/* SPACING OF FOOD BUTTONS ON GAME PAGE */
+.button {
+    border: 10px double #000000;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px;
+    margin: 10px;
     
 }
 
-.feed-image {
-    height: 100px;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
+.login-buttons {
+    background-color: rgb(13, 43, 164);
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight:800;
+    padding: 10px;
 }
 
 .tamagotchi-button {
@@ -43,10 +96,6 @@ main {
     background-color: #e7e7e7;
 }
 
-.button {
-    height:20px;
-}
-
 .tooltip {
     top: 100%; 
     transform: translateX(-50%); 
@@ -57,7 +106,7 @@ main {
     font-size: 12px;
     white-space: nowrap;
     z-index: 100;
-    display: none; 
+    /* display: none;  REMOVED TO PREVENT CONFLICT*/
 }
 
 /*speed and how many times Mikey "spins" */
