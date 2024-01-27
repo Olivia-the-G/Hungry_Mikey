@@ -66,10 +66,10 @@ let currentRevealSoundIndex = 0;
     function updateButtonImages() {
         $.get('/getImageUrls', function(data) {
             // added a timestamp to prevent caching
-            $('#feedButtonHealthy').html('<img src="' + data.healthy + '?v=' + Date.now() + '" alt="Feed Healthy">');
-            $('#feedButtonEmpty').html('<img src="' + data.empty + '?v=' + Date.now() + '" alt="Feed Empty">');
-            $('#feedButtonBad').html('<img src="' + data.bad + '?v=' + Date.now() + '" alt="Feed Bad">');
-            $('#feedButtonReveal').html('<img src="' + data.reveal + '?v=' + Date.now() + '" alt="Feed Reveal">');
+            $('#feedButtonHealthy').html('<img class="feed-image" src="' + data.healthy + '?v=' + Date.now() + '" alt="Feed Healthy">');
+            $('#feedButtonEmpty').html('<img class="feed-image" src="' + data.empty + '?v=' + Date.now() + '" alt="Feed Empty">');
+            $('#feedButtonBad').html('<img class="feed-image" src="' + data.bad + '?v=' + Date.now() + '" alt="Feed Bad">');
+            $('#feedButtonReveal').html('<img class="feed-image" src="' + data.reveal + '?v=' + Date.now() + '" alt="Feed Reveal">');
         });
 }
 

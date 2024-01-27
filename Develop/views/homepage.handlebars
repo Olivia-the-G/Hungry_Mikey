@@ -1,26 +1,27 @@
 <body>
-<div>
-    <h1>Welcome To Hungry Mikey</h1>
+<div id="homepage-main">
+    <h1>AI GENERATED GREETING HERE</h1>
     <img id="welcome-mikey" src="../images/Mikey Gifs/homepage.gif" alt="cartoon mouse" />
 </div>
-<div class="flex-">
+<div>
     <a href="/game">
-        <button type="button">Play With Mikey</button>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/logout">
-        <button type="button" id="logout">logout</button>
-        </a>
-        {{else}}
-        <a href="/login">
-        <button type="button">login</button>
-        </a>
-        {{/if}}
+    <img id="play-button" class="custom-button" src="../images/Buttons/play button.png">
     </a>
+    <!-- Conditionally render login or logout links -->
+    {{#if logged_in}}
+    <a href="/logout">
+    <img src="../images/Buttons/logout.png">
+    </a>
+    {{else}}
+    <a href="/login">
+    <img id="login-button" class="custom-button" src="../images/Buttons/login.png">
+    </a>
+    {{/if}}
+    
 </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <script src="script.js"></script>
+    {{!-- <script src="script.js"></script> --}}
 
 
 </body>

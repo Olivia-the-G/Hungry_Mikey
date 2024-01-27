@@ -1,8 +1,32 @@
+* {
+    outline: black solid 2px;
+}
+
+main {
+    width: 550px;
+    height: 600px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#homepage-main {
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+}
+
+.custom-button:hover {
+    
+}
+
+.feed-image {
+    height: 100px;
+}
+
 .button-container {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    margin-bottom: 20px;
+    margin: 20px;
 }
 
 .tamagotchi-button {
@@ -20,11 +44,10 @@
 }
 
 .button {
-    position: relative;
+    height:20px;
 }
 
 .tooltip {
-    position: relative;
     top: 100%; 
     transform: translateX(-50%); 
     background-color: black;
