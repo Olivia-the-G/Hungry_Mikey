@@ -1,6 +1,6 @@
 $(document).ready(function() {
     const $tamagotchiImg = $("#tamagotchi");
-    const frames = ["../Mikey Frames/Mikey Frame 1.svg", "../Mikey Frames/Mikey Frame 2.svg", "../Mikey Frames/Mikey Frame 3.svg", "../Mikey Frames/Mikey Frame 4.svg", "../Mikey Frames/Mikey Frame 5.svg", "../Mikey Frames/Mikey Frame 6.svg"];
+    const frames = ["/images/Mikey Frames/Mikey Frame 1.svg", "/images/Mikey Frames/Mikey Frame 2.svg", "/images/Mikey Frames/Mikey Frame 3.svg", "/images/Mikey Frames/Mikey Frame 4.svg", "/images/Mikey Frames/Mikey Frame 5.svg", "/images/Mikey Frames/Mikey Frame 6.svg"];
 const healthySounds = [
     "20181112_Quest Ding 01 ｜ Heroes of the Storm",
     "20181112_Quest Ding 02 ｜ Heroes of the Storm",
