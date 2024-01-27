@@ -142,7 +142,7 @@ main {
 
 /* display Mikey upside down */
 .upside-down {
-    transform: rotate(90deg);
+    /* transform: rotate(90deg);  */ /* removed for now*/
 }
 
 /* keyframes for SVG spin animation  */
