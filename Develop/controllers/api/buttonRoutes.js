@@ -13,16 +13,16 @@ router.post('/feedHealthy', (req, res) => {
 
   const logEntry = {
       action: 'feedHealthy',
-      response: 'Tamagotchi is happy and well-fed!',
+      response: 'Mikey is happy and well-fed!',
       moodChange: data.mood - (data.mood - 1),
       timestamp: new Date().toISOString(),
   };
   appendToDataLog(logEntry, 'dataFeedLog.json');
 
   let responseMessages = {
-      highMood: "Tamagotchi is happy and well-fed!",
-      mediumMood: "Tamagotchi is feeling okay after the meal.",
-      lowMood: "Tamagotchi is not very happy with that food."
+      highMood: "Mikey is happy and well-fed!",
+      mediumMood: "Mikey is feeling okay after the meal.",
+      lowMood: "Mikey is not very happy with that food."
   };
 
   let responseMessage = '';
@@ -43,7 +43,7 @@ router.post('/feedHealthy', (req, res) => {
 router.post('/feedEmpty', (req, res) => {
   let data = getData();
 
-  // check if the Tamagotchi has any food level left
+  // check if the Mikey has any food level left
   if (data.foodLevel > 0) {
       // Decrement food level by 1
       data.foodLevel -= 1;
@@ -53,17 +53,17 @@ router.post('/feedEmpty', (req, res) => {
 
       const logEntry = {
           action: 'feedEmpty',
-          response: 'Tamagotchi is fed empty.',
+          response: 'Mikey is fed empty.',
           moodChange: data.mood - predictMood({ healthy: 0, empty: 1, reveal: 0, bad: 0 }).mood // Calculate mood change
       };
       appendToDataLog(logEntry, 'dataFeedLog.json');
 
       saveData(data);
 
-      res.json({ message: 'Tamagotchi has been fed empty!', foodLevel: data.foodLevel, mood: data.mood });
+      res.json({ message: 'Mikey has been fed empty!', foodLevel: data.foodLevel, mood: data.mood });
   } else {
       // if food level is already at 0, send a success response with no further action
-      res.json({ message: 'Tamagotchi has no food left!', foodLevel: data.foodLevel, mood: data.mood });
+      res.json({ message: 'Mikey has no food left!', foodLevel: data.foodLevel, mood: data.mood });
   }
 });
 
@@ -78,14 +78,14 @@ router.post('/feedReveal', (req, res) => {
 
   const logEntry = {
       action: 'feedReveal',
-      response: 'Tamagotchi is fed with a reveal.',
+      response: 'Mikey is fed with a reveal.',
       moodChange: data.mood - predictMood(input).mood // calculate mood change
   };
   appendToDataLog(logEntry, 'dataFeedLog.json');
 
   saveData(data);
 
-  res.json({ message: 'Tamagotchi has been fed with a reveal!', size: data.size, mood: data.mood });
+  res.json({ message: 'Mikey has been fed with a reveal!', size: data.size, mood: data.mood });
 });
 
 
@@ -104,13 +104,13 @@ router.post('/feedBad', (req, res) => {
   // generate a response message based on the mood prediction
   let responseMessage = '';
   if (moodPrediction.mood >= 0.8) {
-      responseMessage = 'Tamagotchi is upset after a bad meal!';
+      responseMessage = 'Mikey is upset after a bad meal!';
   } else if (moodPrediction.mood >= 0.6) {
-      responseMessage = 'Tamagotchi is not happy about the bad meal.';
+      responseMessage = 'Mikey is not happy about the bad meal.';
   } else if (moodPrediction.mood >= 0.4) {
-      responseMessage = 'Tamagotchi is disappointed with the bad meal.';
+      responseMessage = 'Mikey is disappointed with the bad meal.';
   } else {
-      responseMessage = 'Tamagotchi is very unhappy after a bad meal.';
+      responseMessage = 'Mikey is very unhappy after a bad meal.';
   }
 
   data.mood = moodPrediction.mood;

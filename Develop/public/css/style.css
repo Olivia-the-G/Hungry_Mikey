@@ -108,7 +108,7 @@ main {
     box-shadow: 2px 2px 5px;
 }
 
-.tamagotchi-button {
+.mikey-button {
     margin: 0 10px;
     padding: 10px 20px;
     background-color: #f0f0f0;
@@ -118,7 +118,7 @@ main {
     transition: background-color 0.3s;
 }
 
-.tamagotchi-button:hover {
+.mikey-button:hover {
     background-color: #e7e7e7;
 }
 
@@ -142,7 +142,7 @@ main {
 
 /* display Mikey upside down */
 .upside-down {
-    transform: rotate(180deg);
+    transform: rotate(90deg);
 }
 
 /* keyframes for SVG spin animation  */
@@ -158,7 +158,7 @@ svg path {
 }
 
 /* in-line style */
-#tamagotchi {
+#mikey {
     transition: width 0.5s, height 0.5s;
     margin: auto;
 }
