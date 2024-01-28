@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getImageUrlsFromFolder, getRandomImage } = require('../../utils/utils'); 
+const { getImageUrlsFromFolder, getRandomImage } = require('../../utils/utils');
 
 // get random image URLs for each button type
 router.get('/getImageUrls', (req, res) => {

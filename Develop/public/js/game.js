@@ -124,27 +124,128 @@ $(document).ready(function() {
         repeatCount = 0;
     }
 
-function postFeedAction(feedType) {
-    $.post('/' + feedType, function(data) {
-       
-        const { message, foodLevel, size, mood } = data;
+//Mikey's happy animation
+function feedMikeyHealthy() {
+    if (!animationEnabled) return;
 
-    
-        console.log('Message:', message);
-        if (foodLevel !== undefined) {
-            console.log('Food Level:', foodLevel);
-        }
-        if (size !== undefined) {
-            console.log('Size:', size);
-        }
-        console.log('Mood:', mood);
+    $mikeyImg.attr('src', healthyFrames[frameIndex]);
 
-      
-        fetchStatus();
-        startAnimation();
-        updateTamagotchiMood(mood);
-    }, 'json');
+    let frameCount = 0; 
+    let reverse = false; 
+
+    animationInterval = setInterval(function() {
+        if (!reverse) {
+            if (frameIndex < 3) {
+                $mikeyImg.attr('src', healthyFrames[frameIndex++]);
+            } else {
+                reverse = true; 
+                frameIndex = 2; 
+            }
+        } else {
+            if (frameIndex > 0) {
+                $mikeyImg.attr('src', healthyFrames[frameIndex--]);
+            } else {
+                reverse = false; 
+                frameIndex = 0; 
+                frameCount++;
+                if (frameCount === 2) { 
+                    stopAnimation();
+                    $mikeyImg.attr('src', healthyFrames[0]); // reset to frame 1
+                    return;
+                }
+            }
+        }
+
+        if (frameIndex === healthyFrames.length) {
+            frameIndex = 0;
+        }
+    }, repeatCount === 0 ? 200 : 133);
+    animationEnabled = false;
+
+    // stop the animation after a certain time (adjust the time as needed)
+    setTimeout(function () {
+        stopAnimation();
+        $mikeyImg.attr('src', healthyFrames[0]); // then reset to frame 1
+    }, 3000); // 3 sec
 }
+
+
+
+// Mikey's sad animation
+function feedMikeySad() {
+    if (!animationEnabled) return;
+
+    $mikeyImg.attr('src', notLikeFrames[frameIndex]);
+
+    let frameCount = 0; 
+    let reverse = false; 
+
+    animationInterval = setInterval(function() {
+        if (!reverse) {
+            if (frameIndex < 4) {
+                $mikeyImg.attr('src', notLikeFrames[frameIndex++]);
+            } else {
+                reverse = true; 
+                frameIndex = 3; 
+            }
+        } else {
+            if (frameIndex > 0) {
+                $mikeyImg.attr('src', notLikeFrames[frameIndex--]);
+            } else {
+                reverse = false; 
+                frameIndex = 0; 
+                frameCount++;
+                if (frameCount === 3) { 
+                    stopAnimation();
+                    $mikeyImg.attr('src', notLikeFrames[0]); // reset to frame 1
+                    return;
+                }
+            }
+        }
+
+        if (frameIndex === notLikeFrames.length) {
+            frameIndex = 0;
+        }
+    }, repeatCount === 0 ? 200 : 133);
+    animationEnabled = false;
+
+    // stop the animation after a certain time
+    setTimeout(function () {
+        stopAnimation();
+        $mikeyImg.attr('src', notLikeFrames[0]); // reset to frame 1
+    }, 3000); // 3 sec
+}
+
+
+
+
+
+    function postFeedAction(feedType) {
+        $.post('/' + feedType, function(data) {
+            const { message, foodLevel, size, mood } = data;
+
+            console.log('Message:', message);
+            if (foodLevel !== undefined) {
+                console.log('Food Level:', foodLevel);
+            }
+            if (size !== undefined) {
+                console.log('Size:', size);
+            }
+            console.log('Mood:', mood);
+            
+
+            // triggers the happy or sad animations after the feeding action
+            if (feedType === 'feedHealthy') {
+                feedMikeyHealthy();
+            } else if (feedType === 'feedBad') {
+                feedMikeySad();
+            }
+
+            fetchStatus();
+            startAnimation();
+            updateMikeyMood(mood);
+        }, 'json');
+    }
 
 
 
