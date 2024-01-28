@@ -152,7 +152,7 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
 
-
+// routing to serve parental control handle bars page
 app.get('/parental control', (req, res) => {
   res.render('parentalIndex', { parental_control : "Parental Control Page" });
 });
