@@ -1,39 +1,39 @@
-{{!< main}}
+<body>
+    <div id="game-menu-button-container">
+    <a id="return-home" href="/">
+    <img class="custom-button" src="../images/Buttons/logout.png">
+    <img class="custom-button" src="../images/Buttons/return home.png">
+    </a>
+    </div>
+    <div id="mikey-border">
+    <img id="tamagotchi" src="../images/Mikey Frames/Mikey Frame 1.svg" alt="Tamagotchi" />
+    </div>
+    <div id="buttonContainer">
+        <button id="feedButtonBad" class="button" data-title="Feed Bad">
+            <span class="button-label">Feed Bad</span>
+        </button>
 
-{{#*inline "_head"}}
-<link rel="stylesheet" href="/css/style.css"> 
-{{/inline}}
+        <button id="feedButtonHealthy" class="button" data-title="Feed Healthy">
+            <span class="button-label">Feed Healthy</span>
+        </button>
 
-    <style>
-        @keyframes blob {
-            
-        }
+        <button id="feedButtonEmpty" class="button" data-title="Feed Empty">
+            <span class="button-label">Feed Empty</span>
+        </button>
 
-        svg path {
-            animation: blob 5s infinite;
-        }
+        <button id="feedButtonReveal" class="button" data-title="Feed Reveal">
+            <span class="button-label">Feed Reveal</span>
+        </button>
+    </div>
 
-        /* in-line syle */
-        #tamagotchi {
-            transition: width 0.5s, height 0.5s; 
-            margin: auto; 
-        }
-    </style>
-    
-<h1>Hungry Mikey</h1>
-<img id="tamagotchi" src="/Mikey Frames/Mikey Frame 1.svg" alt="Hungry Mikey" />
+    <p id="status">Food Level: <span id="foodLevel">0</span></p>
 
-<div id="buttonContainer">
-    {{> feedButtonBad }}
-    {{> feedButtonHealthy }}
-    {{> feedButtonEmpty }}
-    {{> feedButtonReveal }}
-    {{> parentalControlsButton }} <!-- This button will link to parental controls -->
-</div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<p id="status">Food Level: <span id="foodLevel">0</span></p>
+    <script src="/js/game.js"></script>
 
-{{#*inline "_foot"}}
 
-<script src="path/to/specific-script.js"></script>
-{{/inline}}
+</body>
+
+</html>
+

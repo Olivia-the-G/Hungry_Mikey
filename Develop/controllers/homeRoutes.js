@@ -6,10 +6,10 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     res.render('homepage', { 
-      logged_in: true
-      // req.session.logged_in 
+      logged_in: req.session.logged_in 
     });
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });
@@ -37,35 +37,45 @@ router.get('/parent/:id', async (req, res) => {
   }
 });
 
-//http://localhost:3001/profile
-// Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
-    });
+// //http://localhost:3001/profile
+// // Use withAuth middleware to prevent access to route
+// router.get('/profile', withAuth, async (req, res) => {
+//   try {
+//     // Find the logged in user based on the session ID
+//     const userData = await User.findByPk(req.session.user_id, {
+//       attributes: { exclude: ['password'] },
+//       include: [{ model: Project }],
+//     });
 
-    const user = userData.get({ plain: true });
+//     const user = userData.get({ plain: true });
 
-    res.render('profile', {
-      ...user,
-      logged_in: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render('profile', {
+//       ...user,
+//       logged_in: true
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/game');
     return;
   }
 
   res.render('login');
+});
+
+// handlebar routes for returning to game
+router.get('/game', (req, res) => {
+  res.render('game', { title: 'Hungry Mikey' });
+});
+
+// handlebars routes for parental control page
+router.get('/parental-control', (req, res) => {
+  res.render('parentalControl', { title: 'Parental Control Switch' });
 });
 
 module.exports = router;

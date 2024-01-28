@@ -16,19 +16,19 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    first_name: {
+    fname: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    user_password: {
+    password: {
       type: DataTypes.STRING,
       allowNull: false, 
     },
-    date_joined: {
+    dateJoined: {
       type: DataTypes.DATE,
       allowNull: false,
     },

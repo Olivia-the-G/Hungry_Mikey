@@ -1,8 +1,8 @@
 const sequelize = require('../config/connection');
 const User = require('../models/User');
-const Session = require('../models/Session');
+const Activity = require('../models/Activity');
 const userData = require('./userData.json');
-const sessionData = require('./userData.json');
+const activityData = require('./userData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -11,9 +11,9 @@ const seedDatabase = async () => {
     returning: true,
   });
   
-  for (const session of sessionData) {
-    await Session.create({
-      ...session,
+  for (const activity of activityData) {
+    await Activity.create({
+      ...activity,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
