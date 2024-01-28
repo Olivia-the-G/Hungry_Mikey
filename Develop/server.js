@@ -216,11 +216,6 @@ app.get('/getImageUrls', (req, res) => {
   });
 });
 
-// retrieve all logged data
-// app.get('/getAllLoggedData', (req, res) => {
-//     const loggedData = getAllDataLogEntries('dataFeedLog.json');
-//     res.json(loggedData);
-// });
 
 // get Mikey's status
 app.get('/status', (req, res) => {
