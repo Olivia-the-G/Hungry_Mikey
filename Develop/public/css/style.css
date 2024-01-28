@@ -6,6 +6,7 @@
    --rich-black: #001524;
    --moss-green: #4F5D2F;
    --ship-grey: #7D7E75;
+  
 }
 header {
     width: 600px;
@@ -77,7 +78,11 @@ main {
     margin-bottom: 20px;
     margin-left: 20px;
 }
+body {
+font-family: sans-serif;
+background-color: var(--ship-grey);
 
+}
 /* FOOD BUTTONS ON GAME PAGE */
 .feed-image {
     height: 80px;
