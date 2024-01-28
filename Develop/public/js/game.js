@@ -70,7 +70,7 @@ $(document).ready(function() {
 
     // function to update button images
     function updateButtonImages() {
-        $.get('/getImageUrls', function(data) {
+        $.get('/api/images/getImageUrls', function(data) {
             // added a timestamp to prevent caching
             $('#feedButtonHealthy').html('<img class="feed-image" src="' + data.healthy + '?v=' + Date.now() + '" alt="Feed Healthy">');
             $('#feedButtonEmpty').html('<img class="feed-image" src="' + data.empty + '?v=' + Date.now() + '" alt="Feed Empty">');
@@ -262,7 +262,7 @@ function feedMikeySad() {
     };
 
     const feedEmpty = function() {
-        const shuffledNames = shuffleButtonsAndNames();
+        shuffleButtonsAndNames();
         postFeedAction('feedEmpty');
         playEmptySound();
         updateButtonImages();
@@ -272,7 +272,7 @@ function feedMikeySad() {
         // ensure there are not multiple instances of tooltips
         $('.tooltip').remove();
 
-        // tooltips for revealFoods function
+        // button reveal tooltips for revealFoods function
         $('.button').each(function() {
             const tooltipText = $(this).attr('data-title');
             const $tooltip = $('<span class="tooltip" style="display: none;">' + tooltipText + '</span>');
@@ -280,7 +280,7 @@ function feedMikeySad() {
             $tooltip.fadeIn();
         });
 
-        console.log('Tooltips added');
+        console.log('tooltips added');
 
         // delay, hide and remove tooltips
         setTimeout(() => {
@@ -288,7 +288,7 @@ function feedMikeySad() {
                 $(this).remove();
             });
 
-            console.log('Tooltips removed');
+            console.log('tooltips removed');
         }, 5000); // 5 seconds
 
         postFeedAction('feedReveal');
@@ -296,7 +296,7 @@ function feedMikeySad() {
     };
 
     const feedBad = function() {
-        const shuffledNames = shuffleButtonsAndNames();
+        shuffleButtonsAndNames();
         postFeedAction('feedBad');
         playBadSound();
         updateButtonImages();
@@ -333,7 +333,7 @@ function feedMikeySad() {
     }
 
     function fetchStatus() {
-        $.get('/status', function(data) {
+        $.get('/api/status', function(data) {
             $('#foodLevel').text(data.foodLevel);
             updateMikeySize(data.foodLevel);
         }, 'json');
