@@ -32,12 +32,12 @@ $(document).ready(function() {
     let repeatCount = 0;
     let animationInterval;
     let animationEnabled = true;
-    let buttonNames = {
-        feedHealthy: "Feed Healthy",
-        feedEmpty: "Feed Empty",
-        feedReveal: "Feed Reveal",
-        feedBad: "Feed Bad"
-    };
+    // let buttonNames = {
+    //     feedHealthy: "Feed Healthy",
+    //     feedEmpty: "Feed Empty",
+    //     feedReveal: "Feed Reveal",
+    //     feedBad: "Feed Bad"
+    // };
 
     // functions to play sounds from arrays
     function playBadSound() {
@@ -85,7 +85,7 @@ $(document).ready(function() {
     function shuffleButtonsAndNames() {
         const buttonContainer = $("#buttonContainer");
         const buttons = buttonContainer.children();
-        const names = Object.values(buttonNames);
+        // const names = Object.values(buttonNames);
 
         // shuffle the order of buttons in array
         for (let i = buttons.length - 1; i > 0; i--) {
