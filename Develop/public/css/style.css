@@ -34,7 +34,7 @@ main {
 }
 
 #welcome-mikey {
-    outline: black double 10px;
+    outline: --rich-black double 10px;
     border-radius: 8%;
     box-shadow: 5px 5px 10px;
     margin: 15px;
@@ -44,7 +44,7 @@ main {
     font-family: "Single Day", cursive;
     font-size: 30px;
     overflow: hidden;
-    border-right: 1px solid #000;
+    border-right: 1px solid --rich-black;
     white-space: nowrap;
     margin: 0 auto;
     letter-spacing: 2px;
@@ -58,12 +58,12 @@ main {
 
 @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: #000; }
+    50% { border-color: var(--rich-black); }
 }
 
 /* GAME WINDOW BORDER ON GAME PAGE */
 #mikey-border {
-    outline: black double 10px;
+    outline: --rich-black double 10px;
     border-radius: 8%;
     box-shadow: 5px 5px 10px;
     margin: 15px;
@@ -92,7 +92,7 @@ main {
 
 /* SPACING OF FOOD BUTTONS ON GAME PAGE */
 .button {
-    border: 10px double #000000;
+    border: 10px double --rich-black;
     border-radius: 50%;
     box-shadow: 2px 2px 5px;
     margin: 5px;
@@ -109,7 +109,7 @@ main {
 }
 
 #signup-container {
-    border: 10px double #000000;
+    border: 10px double --rich-black;
     box-shadow: 2px 2px 5px;
 }
 
@@ -130,7 +130,7 @@ main {
 .tooltip {
     top: 100%; 
     transform: translateX(-50%); 
-    background-color: black;
+    background-color: var(--rich-black);
     color: white;
     padding: 5px;
     border-radius: 5px;
