@@ -1429,5 +1429,104 @@
     "response": "Mikey is happy and well-fed!",
     "moodChange": 1,
     "timestamp": "2024-01-27T23:03:38.608Z"
+  },
+  {
+    "action": "feedHealthy",
+    "response": "Mikey is happy and well-fed!",
+    "moodChange": 1,
+    "timestamp": "2024-01-28T16:25:54.699Z"
+  },
+  {
+    "action": "feedHealthy",
+    "response": "Mikey is happy and well-fed!",
+    "moodChange": 1,
+    "timestamp": "2024-01-28T16:25:55.079Z"
+  },
+  {
+    "action": "feedEmpty",
+    "response": "Mikey is fed empty.",
+    "moodChange": 0
+  },
+  {
+    "action": "feedEmpty",
+    "response": "Mikey is fed empty.",
+    "moodChange": 0
+  },
+  {
+    "action": "feedHealthy",
+    "response": "Mikey is happy and well-fed!",
+    "moodChange": 1,
+    "timestamp": "2024-01-28T16:25:59.062Z"
+  },
+  {
+    "action": "feedHealthy",
+    "response": "Mikey is happy and well-fed!",
+    "moodChange": 1,
+    "timestamp": "2024-01-28T16:26:38.201Z"
+  },
+  {
+    "action": "feedReveal",
+    "response": "Mikey is fed with a reveal.",
+    "moodChange": 0
+  },
+  {
+    "action": "feedHealthy",
+    "response": "Mikey is happy and well-fed!",
+    "moodChange": 1,
+    "timestamp": "2024-01-28T16:26:41.268Z"
+  },
+  {
+    "action": "feedHealthy",
+    "response": "Mikey is happy and well-fed!",
+    "moodChange": 1,
+    "timestamp": "2024-01-28T16:28:09.552Z"
+  },
+  {
+    "action": "feedEmpty",
+    "response": "Mikey is fed empty.",
+    "moodChange": 0
+  },
+  {
+    "action": "feedHealthy",
+    "response": "Mikey is happy and well-fed!",
+    "moodChange": 1,
+    "timestamp": "2024-01-28T16:28:10.352Z"
+  },
+  {
+    "action": "feedReveal",
+    "response": "Mikey is fed with a reveal.",
+    "moodChange": 0
+  },
+  {
+    "action": "feedEmpty",
+    "response": "Mikey is fed empty.",
+    "moodChange": 0
+  },
+  {
+    "action": "feedReveal",
+    "response": "Mikey is fed with a reveal.",
+    "moodChange": 0
+  },
+  {
+    "action": "feedHealthy",
+    "response": "Mikey is happy and well-fed!",
+    "moodChange": 1,
+    "timestamp": "2024-01-28T16:29:59.732Z"
+  },
+  {
+    "action": "feedEmpty",
+    "response": "Mikey is fed empty.",
+    "moodChange": 0
+  },
+  {
+    "action": "feedBad",
+    "response": "Mikey is very unhappy after a bad meal.",
+    "moodChange": 0
+  },
+  {
+    "action": "feedHealthy",
+    "response": "Mikey is happy and well-fed!",
+    "moodChange": 1,
+    "timestamp": "2024-01-28T16:30:37.631Z"
   }
 ]

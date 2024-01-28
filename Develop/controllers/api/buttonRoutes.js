@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { appendToDataLog, getData, saveData, predictMood } = require('../../utils/utils');
-// const { getData, saveData, predictMood, appendToDataLog } = require('../../utils'); // Assuming utility functions are extracted
+
 
 // endpoint to feed healthy
 router.post('/feedHealthy', (req, res) => {

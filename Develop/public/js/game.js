@@ -64,7 +64,8 @@ $(document).ready(function() {
 
     // function to update button images
     function updateButtonImages() {
-        $.get('/api/images/getImageUrls', function(data) {
+        $.get('/getImageUrls', function(data) {
+        // $.get('/api/images/getImageUrls', function(data) {
             // added a timestamp to prevent caching
             $('#feedButtonHealthy').html('<img class="feed-image" src="' + data.healthy + '?v=' + Date.now() + '" alt="Feed Healthy">');
             $('#feedButtonEmpty').html('<img class="feed-image" src="' + data.empty + '?v=' + Date.now() + '" alt="Feed Empty">');
@@ -326,7 +327,8 @@ function feedMikeySad() {
     }
 
     function fetchStatus() {
-        $.get('/api/status', function(data) {
+          $.get('/status', function(data) {
+        // $.get('/api/status', function(data) {
             $('#foodLevel').text(data.foodLevel);
             updateMikeySize(data.foodLevel);
         }, 'json');
