@@ -1,12 +1,17 @@
 * {
     /* outline: black solid 2px; */
 }
-
+.root
+{
+   --rich-black: #001524;
+   --moss-green: #4F5D2F;
+   --ship-grey: #7D7E75;
+}
 header {
     width: 600px;
     margin-left: 20px;
     margin-top: 20px;
-    border-bottom: 10px double black;
+    border-bottom: 10px double --rich-black;
 }
 
 main {
