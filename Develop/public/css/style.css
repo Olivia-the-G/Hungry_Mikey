@@ -135,6 +135,19 @@ background-color: var(--ship-grey);
     top: 100%; 
     transform: translateX(-50%); 
     background-color: var(--rich-black);
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+    /* display: none;  REMOVED TO PREVENT CONFLICT*/
+}
+.tooltip {
+    top: 100%; 
+    transform: translateX(-50%); 
+    background-color: var(--rich-black);
     color: white;
     padding: 5px;
     border-radius: 5px;

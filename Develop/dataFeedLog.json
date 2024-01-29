@@ -1894,5 +1894,15 @@
     "response": "Mikey is happy and well-fed!",
     "moodChange": 1,
     "timestamp": "2024-01-29T15:57:36.895Z"
+  },
+  {
+    "action": "feedEmpty",
+    "response": "Mikey is fed empty.",
+    "moodChange": 0
+  },
+  {
+    "action": "feedReveal",
+    "response": "Mikey is fed with a reveal.",
+    "moodChange": 0
   }
 ]
