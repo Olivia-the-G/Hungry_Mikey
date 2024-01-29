@@ -22,6 +22,7 @@ This game is going to be deployed on Heroku. To play it you can visit the url fo
 
 ## Features
 This game uses features such as stored server side data to allow parents to have access to information such as how long their child has been playing in a day.
+It also features appealing font to easily encourage the child to explore.
 ## Credits
 
 Here are all of the collaborators who worked on this project
