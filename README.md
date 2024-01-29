@@ -21,7 +21,7 @@ Hungry Mikey makes use of characters from the **Disney short film "Steamboat Wil
 This game is going to be deployed on Heroku. To play it you can visit the url found here -->
 
 ## Features
-
+This game uses features such as stored server side data to allow parents to have access to information such as how long their child has been playing in a day.
 ## Credits
 
 Here are all of the collaborators who worked on this project
