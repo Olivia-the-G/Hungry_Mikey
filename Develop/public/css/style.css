@@ -1,12 +1,9 @@
-* {
-    /* outline: black solid 2px; */
-}
 
 header {
     width: 600px;
     margin-left: 20px;
     margin-top: 20px;
-    border-bottom: 10px double black;
+    border-bottom: 10px double --rich-black;
 }
 
 main {
@@ -29,7 +26,7 @@ main {
 }
 
 #welcome-mikey {
-    outline: black double 10px;
+    outline: --rich-black double 10px;
     border-radius: 8%;
     box-shadow: 5px 5px 10px;
     margin: 15px;
@@ -39,7 +36,7 @@ main {
     font-family: "Single Day", cursive;
     font-size: 30px;
     overflow: hidden;
-    border-right: 1px solid #000;
+    border-right: 1px solid --rich-black;
     white-space: nowrap;
     margin: 0 auto;
     letter-spacing: 2px;
@@ -53,12 +50,12 @@ main {
 
 @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: #000; }
+    50% { border-color: var(--rich-black); }
 }
 
 /* GAME WINDOW BORDER ON GAME PAGE */
 #mikey-border {
-    outline: black double 10px;
+    outline: --rich-black double 10px;
     border-radius: 8%;
     box-shadow: 5px 5px 10px;
     margin: 15px;
@@ -72,7 +69,11 @@ main {
     margin-bottom: 20px;
     margin-left: 20px;
 }
+body {
+font-family: sans-serif;
+background-color: var(--ship-grey);
 
+}
 /* FOOD BUTTONS ON GAME PAGE */
 .feed-image {
     height: 80px;
@@ -87,7 +88,7 @@ main {
 
 /* SPACING OF FOOD BUTTONS ON GAME PAGE */
 .button {
-    border: 10px double #000000;
+    border: 10px double --rich-black;
     border-radius: 50%;
     box-shadow: 2px 2px 5px;
     margin: 5px;
@@ -104,11 +105,11 @@ main {
 }
 
 #signup-container {
-    border: 10px double #000000;
+    border: 10px double --rich-black;
     box-shadow: 2px 2px 5px;
 }
 
-.tamagotchi-button {
+.mikey-button {
     margin: 0 10px;
     padding: 10px 20px;
     background-color: #f0f0f0;
@@ -118,14 +119,14 @@ main {
     transition: background-color 0.3s;
 }
 
-.tamagotchi-button:hover {
+.mikey-button:hover {
     background-color: #e7e7e7;
 }
 
 .tooltip {
     top: 100%; 
     transform: translateX(-50%); 
-    background-color: black;
+    background-color: var(--rich-black);
     color: white;
     padding: 5px;
     border-radius: 5px;
@@ -138,11 +139,6 @@ main {
 /*speed and how many times Mikey "spins" */
 .spinning {
     animation: spin 1s linear 2;
-}
-
-/* display Mikey upside down */
-.upside-down {
-    transform: rotate(180deg);
 }
 
 /* keyframes for SVG spin animation  */
@@ -158,7 +154,7 @@ svg path {
 }
 
 /* in-line style */
-#tamagotchi {
+#mikey {
     transition: width 0.5s, height 0.5s;
     margin: auto;
 }

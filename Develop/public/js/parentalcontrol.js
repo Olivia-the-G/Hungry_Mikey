@@ -1,18 +1,46 @@
-document.getElementById('parentalControlSwitch').addEventListener('change', function() {
-    let userInfoDiv = document.getElementById('userInfo');
-    if(this.checked) {
-        // Parental Controls Enabled
-        const userData = {
-            name: "John Doe",
-            timeSpent: "2 hours",
-            logins: [1, 0, 2, 1, 3, 1, 0] // Example data for each day of the week
-        };
-        displayUserData(userData);
-        userInfoDiv.style.display = 'block';
-    } else {
-        // Parental Controls Disabled
-        userInfoDiv.style.display = 'none';
+const User = require('./models/activity.js');
+
+document.getElementById('parentalControlSwitch').addEventListener('change', function () {
+
+    /**
+     * Fetch activity data for a specific user.
+     * 
+     * @param {number} userId - The ID of the user for whom to fetch activity data.
+     * @returns {Promise<Object|null>} Activity data if found, null otherwise.
+     */
+    async function fetchUserActivity(userId) {
+        try {
+            // Find the activity data by user's ID
+            const activity = await Activity.findOne({ where: { name_id: userId } });
+
+            // If no activity data is found, return null
+            if (!activity) {
+                return null;
+            }
+
+            // Extracting the values for each day
+            const activityData = {
+                monday: activity.monday,
+                tuesday: activity.tuesday,
+                wednesday: activity.wednesday,
+                thursday: activity.thursday,
+                friday: activity.friday,
+                saturday: activity.saturday,
+                sunday: activity.sunday,
+            };
+
+            return activityData;
+        } catch (error) {
+            console.error('Error fetching user activity:', error);
+            throw error;
+        }
     }
+}
+
+  
+}
+
+    module.exports = { fetchAllUsers };
 });
 
 function displayUserData(userData) {
