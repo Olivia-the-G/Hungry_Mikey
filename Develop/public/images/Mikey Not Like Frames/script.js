@@ -1,8 +1,8 @@
 $(document).ready(function() {
-    const $mikeyImg = $("#mikey");
-    const frames = ["/images/Mikey Frames/Mikey Frame 1.svg", "/images/Mikey Frames/Mikey Frame 2.svg", "/images/Mikey Frames/Mikey Frame 3.svg", "/images/Mikey Frames/Mikey Frame 4.svg", "/images/Mikey Frames/Mikey Frame 5.svg", "/images/Mikey Frames/Mikey Frame 6.svg"];
-    const healthyFrames = ["/images/Mikey Happy Frames/Mikey - happy - 1.svg", "/images/Mikey Happy Frames/Mikey - happy - 2.svg", "/images/Mikey Happy Frames/Mikey - happy - 3.svg"];
-    const notLikeFrames = ["/images/Mikey Not Like Frames/Mikey - scared - 1.svg", "/images/Mikey Not Like Frames/Mikey - scared - 2.svg", "/images/Mikey Not Like Frames/Mikey - scared - 3.svg", "/images/Mikey Not Like Frames/Mikey - scared - 4.svg"];
+    const $tamagotchiImg = $("#tamagotchi");
+    const frames = ["../Mikey Frames/Mikey Frame 1.svg", "../Mikey Frames/Mikey Frame 2.svg", "../Mikey Frames/Mikey Frame 3.svg", "../Mikey Frames/Mikey Frame 4.svg", "../Mikey Frames/Mikey Frame 5.svg", "../Mikey Frames/Mikey Frame 6.svg"];
+    const healthyFrames = ["../Mikey Happy Frames/Mikey - happy - 1.svg", "../Mikey Happy Frames/Mikey - happy - 2.svg", "../Mikey Happy Frames/Mikey - happy - 3.svg"];
+    const notLikeFrames = ["../Mikey Not Like Frames/Mikey - scared - 1.svg", "../Mikey Not Like Frames/Mikey - scared - 2.svg", "../Mikey Not Like Frames/Mikey - scared - 3.svg", "../Mikey Not Like Frames/Mikey - scared - 4.svg"];
 
     const healthySounds = [
         "20181112_Quest Ding 01 ｜ Heroes of the Storm",
@@ -32,6 +32,12 @@ $(document).ready(function() {
     let repeatCount = 0;
     let animationInterval;
     let animationEnabled = true;
+    let buttonNames = {
+        feedHealthy: "Feed Healthy",
+        feedEmpty: "Feed Empty",
+        feedReveal: "Feed Reveal",
+        feedBad: "Feed Bad"
+    };
 
     // functions to play sounds from arrays
     function playBadSound() {
@@ -65,7 +71,6 @@ $(document).ready(function() {
     // function to update button images
     function updateButtonImages() {
         $.get('/getImageUrls', function(data) {
-        // $.get('/api/images/getImageUrls', function(data) {
             // added a timestamp to prevent caching
             $('#feedButtonHealthy').html('<img class="feed-image" src="' + data.healthy + '?v=' + Date.now() + '" alt="Feed Healthy">');
             $('#feedButtonEmpty').html('<img class="feed-image" src="' + data.empty + '?v=' + Date.now() + '" alt="Feed Empty">');
@@ -80,6 +85,7 @@ $(document).ready(function() {
     function shuffleButtonsAndNames() {
         const buttonContainer = $("#buttonContainer");
         const buttons = buttonContainer.children();
+        const names = Object.values(buttonNames);
 
         // shuffle the order of buttons in array
         for (let i = buttons.length - 1; i > 0; i--) {
@@ -93,18 +99,18 @@ $(document).ready(function() {
         if (!animationEnabled) return;
         
 
-        $mikeyImg.attr('src', frames[frameIndex]);
+        $tamagotchiImg.attr('src', frames[frameIndex]);
 
         animationInterval = setInterval(function() {
             if (frameIndex < 3) {
-                $mikeyImg.attr('src', frames[frameIndex++]);
+                $tamagotchiImg.attr('src', frames[frameIndex++]);
             } else {
                 if (repeatCount < 12) {
-                    $mikeyImg.attr('src', frames[3 + (repeatCount % 3)]);
+                    $tamagotchiImg.attr('src', frames[3 + (repeatCount % 3)]);
                     repeatCount++;
                 } else {
                     stopAnimation();
-                    $mikeyImg.attr('src', frames[0]);
+                    $tamagotchiImg.attr('src', frames[0]);
                     return;
                 }
             }
@@ -124,11 +130,12 @@ $(document).ready(function() {
         repeatCount = 0;
     }
 
+
 //Mikey's happy animation
 function feedMikeyHealthy() {
     if (!animationEnabled) return;
 
-    $mikeyImg.attr('src', healthyFrames[frameIndex]);
+    $tamagotchiImg.attr('src', healthyFrames[frameIndex]);
 
     let frameCount = 0; 
     let reverse = false; 
@@ -136,21 +143,21 @@ function feedMikeyHealthy() {
     animationInterval = setInterval(function() {
         if (!reverse) {
             if (frameIndex < 3) {
-                $mikeyImg.attr('src', healthyFrames[frameIndex++]);
+                $tamagotchiImg.attr('src', healthyFrames[frameIndex++]);
             } else {
                 reverse = true; 
                 frameIndex = 2; 
             }
         } else {
             if (frameIndex > 0) {
-                $mikeyImg.attr('src', healthyFrames[frameIndex--]);
+                $tamagotchiImg.attr('src', healthyFrames[frameIndex--]);
             } else {
                 reverse = false; 
                 frameIndex = 0; 
                 frameCount++;
                 if (frameCount === 2) { 
                     stopAnimation();
-                    $mikeyImg.attr('src', healthyFrames[0]); // reset to frame 1
+                    $tamagotchiImg.attr('src', healthyFrames[0]); // reset to frame 1
                     return;
                 }
             }
@@ -165,7 +172,7 @@ function feedMikeyHealthy() {
     // stop the animation after a certain time (adjust the time as needed)
     setTimeout(function () {
         stopAnimation();
-        $mikeyImg.attr('src', healthyFrames[0]); // then reset to frame 1
+        $tamagotchiImg.attr('src', healthyFrames[0]); // then reset to frame 1
     }, 3000); // 3 sec
 }
 
@@ -175,7 +182,7 @@ function feedMikeyHealthy() {
 function feedMikeySad() {
     if (!animationEnabled) return;
 
-    $mikeyImg.attr('src', notLikeFrames[frameIndex]);
+    $tamagotchiImg.attr('src', notLikeFrames[frameIndex]);
 
     let frameCount = 0; 
     let reverse = false; 
@@ -183,21 +190,21 @@ function feedMikeySad() {
     animationInterval = setInterval(function() {
         if (!reverse) {
             if (frameIndex < 4) {
-                $mikeyImg.attr('src', notLikeFrames[frameIndex++]);
+                $tamagotchiImg.attr('src', notLikeFrames[frameIndex++]);
             } else {
                 reverse = true; 
                 frameIndex = 3; 
             }
         } else {
             if (frameIndex > 0) {
-                $mikeyImg.attr('src', notLikeFrames[frameIndex--]);
+                $tamagotchiImg.attr('src', notLikeFrames[frameIndex--]);
             } else {
                 reverse = false; 
                 frameIndex = 0; 
                 frameCount++;
                 if (frameCount === 3) { 
                     stopAnimation();
-                    $mikeyImg.attr('src', notLikeFrames[0]); // reset to frame 1
+                    $tamagotchiImg.attr('src', notLikeFrames[0]); // reset to frame 1
                     return;
                 }
             }
@@ -212,7 +219,7 @@ function feedMikeySad() {
     // stop the animation after a certain time
     setTimeout(function () {
         stopAnimation();
-        $mikeyImg.attr('src', notLikeFrames[0]); // reset to frame 1
+        $tamagotchiImg.attr('src', notLikeFrames[0]); // reset to frame 1
     }, 3000); // 3 sec
 }
 
@@ -223,9 +230,6 @@ function feedMikeySad() {
     function postFeedAction(feedType) {
         $.post('/' + feedType, function(data) {
             const { message, foodLevel, size, mood } = data;
-
-                    $('#mikeyFeedback').text(message);
-
 
             console.log('Message:', message);
             if (foodLevel !== undefined) {
@@ -246,11 +250,9 @@ function feedMikeySad() {
 
             fetchStatus();
             startAnimation();
-            updateMikeyMood(mood);
+            updateTamagotchiMood(mood);
         }, 'json');
     }
-
-
 
     const feedHealthy = function() {
         shuffleButtonsAndNames();
@@ -260,7 +262,7 @@ function feedMikeySad() {
     };
 
     const feedEmpty = function() {
-        shuffleButtonsAndNames();
+        const shuffledNames = shuffleButtonsAndNames();
         postFeedAction('feedEmpty');
         playEmptySound();
         updateButtonImages();
@@ -270,7 +272,7 @@ function feedMikeySad() {
         // ensure there are not multiple instances of tooltips
         $('.tooltip').remove();
 
-        // button reveal tooltips for revealFoods function
+        // tooltips for revealFoods function
         $('.button').each(function() {
             const tooltipText = $(this).attr('data-title');
             const $tooltip = $('<span class="tooltip" style="display: none;">' + tooltipText + '</span>');
@@ -278,7 +280,7 @@ function feedMikeySad() {
             $tooltip.fadeIn();
         });
 
-        console.log('tooltips added');
+        console.log('Tooltips added');
 
         // delay, hide and remove tooltips
         setTimeout(() => {
@@ -286,7 +288,7 @@ function feedMikeySad() {
                 $(this).remove();
             });
 
-            console.log('tooltips removed');
+            console.log('Tooltips removed');
         }, 5000); // 5 seconds
 
         postFeedAction('feedReveal');
@@ -294,19 +296,19 @@ function feedMikeySad() {
     };
 
     const feedBad = function() {
-        shuffleButtonsAndNames();
+        const shuffledNames = shuffleButtonsAndNames();
         postFeedAction('feedBad');
         playBadSound();
         updateButtonImages();
     };
 
-    function updateMikeyMood(mood) {
+    function updateTamagotchiMood(mood) {
         if (mood >= 0.6) {
-            $mikeyImg.removeClass('spinning upside-down').addClass('normal');
+            $tamagotchiImg.removeClass('spinning upside-down').addClass('normal');
         } else if (mood >= 0.3) {
-            $mikeyImg.removeClass('normal upside-down').addClass('spinning');
+            $tamagotchiImg.removeClass('normal upside-down').addClass('spinning');
         } else {
-            $mikeyImg.removeClass('normal spinning').addClass('upside-down');
+            $tamagotchiImg.removeClass('normal spinning').addClass('upside-down');
         }
     }
 
@@ -322,19 +324,18 @@ function feedMikeySad() {
     $('#feedButtonReveal').on('click', feedReveal);
     $('#feedButtonBad').on('click', feedBad);
 
-    function updateMikeySize(foodLevel) {
+    function updateTamagotchiSize(foodLevel) {
         const newSize = 100 + foodLevel * 10;
-        $mikeyImg.css({
+        $tamagotchiImg.css({
             'width': newSize + 'px',
             'height': newSize + 'px'
         });
     }
 
     function fetchStatus() {
-          $.get('/status', function(data) {
-        // $.get('/api/status', function(data) {
+        $.get('/status', function(data) {
             $('#foodLevel').text(data.foodLevel);
-            updateMikeySize(data.foodLevel);
+            updateTamagotchiSize(data.foodLevel);
         }, 'json');
     }
 
