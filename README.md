@@ -22,6 +22,8 @@ This game is going to be deployed on Heroku. To play it you can visit the url fo
 
 ## Features
 This game uses features such as stored server side data to allow parents to have access to information such as how long their child has been playing in a day.
+Has appealing font to make it easy for kids to interact with and understand!
+Is aimed to teach kids the importance of a balanced diet.
 ## Credits
 
 Here are all of the collaborators who worked on this project
