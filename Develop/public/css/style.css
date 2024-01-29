@@ -32,6 +32,14 @@ main {
     margin: 15px;
 }
 
+.feedback-message {
+    font-family: "Single Day", cursive;
+    color: #333;
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+}
+
 #randomStatement {
     font-family: "Single Day", cursive;
     font-size: 30px;
