@@ -224,6 +224,9 @@ function feedMikeySad() {
         $.post('/' + feedType, function(data) {
             const { message, foodLevel, size, mood } = data;
 
+                    $('#mikeyFeedback').text(message);
+
+
             console.log('Message:', message);
             if (foodLevel !== undefined) {
                 console.log('Food Level:', foodLevel);
