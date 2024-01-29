@@ -349,7 +349,7 @@ function feedMikeySad() {
 
         alert("Your time is up for today! Come again tomorrow!");
 
-        // Disable all buttons and other interactive elements
+        // disable buttons
         $('button').prop('disabled', true);
         $('input').prop('disabled', true);
         $('a').click(function(e) {
@@ -357,6 +357,6 @@ function feedMikeySad() {
         });
     }
 
-    // Set the timer to run the function after the time limit
-    setTimeout(stopGame, timeLimit);
+    // set the timer to run the function after the time limit
+    setTimeout(stopGame, timeLimit); 
 });
