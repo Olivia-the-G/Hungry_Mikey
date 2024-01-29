@@ -1,6 +1,6 @@
 const User = require('./models/activity.js');
 
-document.getElementById('parentalControlSwitch').addEventListener('change', function () {
+document.getElementById('parentalControlSwitch').addEventListener('change', function (){{
 
     /**
      * Fetch activity data for a specific user.
@@ -10,7 +10,7 @@ document.getElementById('parentalControlSwitch').addEventListener('change', func
      */
     async function fetchUserActivity(userId) {
         try {
-            // Find the activity data by user's ID
+            // find the activity data by user's ID
             const activity = await Activity.findOne({ where: { name_id: userId } });
 
             // If no activity data is found, return null
@@ -18,7 +18,7 @@ document.getElementById('parentalControlSwitch').addEventListener('change', func
                 return null;
             }
 
-            // Extracting the values for each day
+            // getting values for each day of the week
             const activityData = {
                 monday: activity.monday,
                 tuesday: activity.tuesday,
@@ -37,11 +37,11 @@ document.getElementById('parentalControlSwitch').addEventListener('change', func
     }
 }
 
-  
-}
-
     module.exports = { fetchAllUsers };
-});
+},
+
+  
+)
 
 function displayUserData(userData) {
     const userInfoDiv = document.getElementById('userInfo');
@@ -52,3 +52,7 @@ function displayUserData(userData) {
         <p>Logins (Sun-Sat): ${userData.logins.join(', ')}</p>
     `;
 }
+
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('Now listening'));
+  });
