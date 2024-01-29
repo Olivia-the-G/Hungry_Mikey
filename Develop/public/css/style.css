@@ -8,6 +8,14 @@
    --ship-grey: #7D7E75;
   
 }
+body {
+    font-family: sans-serif;
+
+
+}
+link {
+    text-align: justify;;
+}
 header {
     width: 600px;
     margin-left: 20px;
