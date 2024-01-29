@@ -1,3 +1,4 @@
+
 * {
     /* outline: black solid 2px; */
 }
@@ -19,6 +20,7 @@ a {
 link {
     text-align: justify;;
 }
+
 header {
     width: 600px;
     margin-left: 20px;
@@ -129,7 +131,7 @@ background-color: var(--ship-grey);
     box-shadow: 2px 2px 5px;
 }
 
-.tamagotchi-button {
+.mikey-button {
     margin: 0 10px;
     padding: 10px 20px;
     background-color: #f0f0f0;
@@ -139,7 +141,7 @@ background-color: var(--ship-grey);
     transition: background-color 0.3s;
 }
 
-.tamagotchi-button:hover {
+.mikey-button:hover {
     background-color: #e7e7e7;
 }
 
@@ -161,11 +163,6 @@ background-color: var(--ship-grey);
     animation: spin 1s linear 2;
 }
 
-/* display Mikey upside down */
-.upside-down {
-    transform: rotate(180deg);
-}
-
 /* keyframes for SVG spin animation  */
 @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -179,7 +176,7 @@ svg path {
 }
 
 /* in-line style */
-#tamagotchi {
+#mikey {
     transition: width 0.5s, height 0.5s;
     margin: auto;
 }
