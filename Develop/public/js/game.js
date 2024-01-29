@@ -336,4 +336,24 @@ function feedMikeySad() {
     }
 
     fetchStatus();
+
+    const timeLimit = 3600000; 
+
+    // function to show time limit and stop interactions
+    function stopGame() {
+        // overlay
+        $('body').append('<div id="overlay"></div>');
+
+        alert("Your time is up for today! Come again tomorrow!");
+
+        // Disable all buttons and other interactive elements
+        $('button').prop('disabled', true);
+        $('input').prop('disabled', true);
+        $('a').click(function(e) {
+            e.preventDefault();
+        });
+    }
+
+    // Set the timer to run the function after the time limit
+    setTimeout(stopGame, timeLimit);
 });
