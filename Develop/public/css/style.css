@@ -114,6 +114,9 @@ main {
 #signup-container {
     border: 10px double #000000;
     box-shadow: 2px 2px 5px;
+    padding-top: 10px;
+    margin-top: 20px;
+    border-radius: 25px;
 }
 
 .mikey-button {
