@@ -1,4 +1,5 @@
 # Hungry_Mikey [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square&link=https%3A%2F%2Fopensource.org%2Flicense%2Fmit%2F)](https://opensource.org/license/mit/)
+![logo](https://github.com/Olivia-the-G/Hungry_Mikey/assets/130778807/59d1e99b-f5e9-457c-b5ad-ced751caaa8b)
 
 ## Table of Contents
 
