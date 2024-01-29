@@ -2,6 +2,28 @@
     /* outline: black solid 2px; */
 }
 
+* {
+    /* outline: black solid 2px; */
+}
+.root
+{
+   --rich-black: #001524;
+   --moss-green: #4F5D2F;
+   --ship-grey: #7D7E75;
+  
+}
+body {
+    font-family: sans-serif;
+    text-wrap: wrap;
+
+}
+a {
+    
+}
+link {
+    text-align: justify;;
+}
+
 header {
     width: 600px;
     margin-left: 20px;
