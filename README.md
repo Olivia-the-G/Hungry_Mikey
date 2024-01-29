@@ -25,6 +25,7 @@ This game is going to be deployed on Heroku. To play it you can visit the url fo
 - This game uses stored server-side data which allows parents to have access to activity data like how long their child has been playing in a day.
 - It has appealing font to make it easy for kids to interact with and understand!
 - Aimed to teach kids the importance of a balanced diet.
+Technologies used include brain.js, heroku, handlebars.js, JAWSDB, dotenv, etc.
 
 ## Credits
 
