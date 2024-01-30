@@ -15,7 +15,7 @@ const statements = [
     const requestData = {
       messages: [{
         role: "user", 
-        content: `use ${statements} as examples. generate only one mickey mouse and healthy food-inspired statement to greet a user to a game for kids. 4-8 words only. never say mickey mouse or any other disney character's name. use puns.` 
+        content: `use ${statements} as examples. generate only one mickey mouse and healthy food-inspired statement to greet a user to a game for kids. 4-10 words only. never say mickey mouse or any other disney character's name. use puns.` 
         }],
     };
   
