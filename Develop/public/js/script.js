@@ -3,7 +3,8 @@ const statements = [
     "Have you seen my pup, Pluo?",
     "I'm so hungry. Please feed me!",
     "Hunger pangs! What's on the menu, friend?",
-    "Sailing works up an appetite!"
+    "Sailing works up an appetite!",
+    "I'm becoming shelf-aware..."
 ];
 
 // Function to generate and render a random statement

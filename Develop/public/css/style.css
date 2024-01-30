@@ -65,9 +65,9 @@ main {
     text-align: center;
 }
 
-#randomStatement {
+#message {
     font-family: "Single Day", cursive;
-    font-size: 30px;
+    font-size: 20px;
     overflow: hidden;
     border-right: 1px solid #000;
     white-space: nowrap;
