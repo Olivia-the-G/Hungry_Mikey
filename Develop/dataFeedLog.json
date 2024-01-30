@@ -2121,15 +2121,5 @@
     "action": "feedReveal",
     "response": "Mikey is fed with a reveal.",
     "moodChange": 0
-  },
-  {
-    "action": "feedReveal",
-    "response": "Mikey is fed with a reveal.",
-    "moodChange": 0
-  },
-  {
-    "action": "feedEmpty",
-    "response": "Mikey is fed empty.",
-    "moodChange": 0
   }
 ]

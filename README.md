@@ -19,7 +19,7 @@ This feedback is **powered by AI** in order to provide new reactions every time.
 Hungry Mikey makes use of characters from the **Disney short film "Steamboat Willie"** which was just recently added to the public domain, allowing anyone to freely use the likeness of all the characters found in the film. 
 
 ## Usage
-This game is going to be deployed on Heroku. To play it you can visit the url found here -->
+To play the game, visit the url here --> https://hungry-hungry-mikey-f614bbce79a1.herokuapp.com/game 
 
 ## Features
 - This game uses stored server-side data which allows parents to have access to activity data like how long their child has been playing in a day.
