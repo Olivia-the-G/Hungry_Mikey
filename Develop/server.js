@@ -7,11 +7,22 @@ const sequelize = require('./config/connection');
 const brain = require('brain.js');
 const mysql = require('mysql2');
 const fs = require('fs');
-const SequelizeStore = require
-('connect-session-sequelize')(session.Store);
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const bodyParser = require("body-parser");
+const { OpenAI } = require("openai");
+
+
+
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+app.use(bodyParser.json());
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
 
 const hbs = exphbs.create({});
 

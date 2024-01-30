@@ -1,12 +1,12 @@
 <body>
 <div id="homepage-main">
-    <h1 id="randomStatement"></h1>
+    <h1 id="message"></h1>
     <img id="welcome-mikey" src="/images/Mikey Gifs/homepage.gif" alt="cartoon mouse" />
 </div>
 <div id="home-button-container">
     <!-- Conditionally render login or logout links -->
     {{#if logged_in}}
-    <a href="/logout">
+    <a href="/login">
     <img src="/images/Buttons/logout.png">
     </a>
     {{else}}
@@ -21,7 +21,7 @@
 </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <script src="/js/script.js"></script>
+    <script src="../js/openai.js"></script>
 
 
 </body>
