@@ -49,8 +49,13 @@ const trainingData = [
   { input: { healthy: 0, empty: 0, reveal: 1, bad: 0 }, output: { mood: 0.5 } },
   { input: { healthy: 0, empty: 0, reveal: 0, bad: 1 }, output: { mood: 0.2 } },
 ];
-network.train(trainingData);
 
+// load network state if exists, else train with initial data
+if (fs.existsSync('networkState.json')) {
+    loadNetworkState();
+} else {
+    network.train(trainingData);
+}
 // log entry to the data log file
 const appendToDataLog = (logEntry, dataLogFilePath) => {
   let dataLog = [];
@@ -64,6 +69,29 @@ const appendToDataLog = (logEntry, dataLogFilePath) => {
 };
 
 
+const retrainNetwork = () => {
+    const loggedData = JSON.parse(fs.readFileSync('dataFeedLog.json'));
+    // convert logged data to the format suitable for training
+    const formattedData = loggedData.map(entry => {
+        return {
+            input: entry.input, 
+            output: entry.output // should be the observed mood after feeding
+        };
+    });
+
+    network.train(formattedData, {
+        iterations: 1000, // adjust as needed
+        errorThresh: 0.005, //same
+    });
+};
+
+// retrain the network every 24 hours
+setInterval(() => {
+    retrainNetwork();
+    saveNetworkState();
+}, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+
+
 // function to get image URLs from a folder
 function getImageUrlsFromFolder(folderName) {
   const directoryPath = path.join(__dirname, 'public', 'images', folderName);
@@ -75,6 +103,25 @@ function getImageUrlsFromFolder(folderName) {
     return [];
   }
 }
+
+const saveNetworkState = () => {
+    const networkState = JSON.stringify(network.toJSON());
+    fs.writeFileSync('networkState.json', networkState);
+};
+
+const loadNetworkState = () => {
+    const networkState = JSON.parse(fs.readFileSync('networkState.json'));
+    network.fromJSON(networkState);
+};
+
+if (fs.existsSync('networkState.json')) {
+    loadNetworkState();
+} else {
+    // utilizing the existing trainingData for initial training
+    network.train(trainingData);
+}
+
+
 
 // function to randomly select an image from an array
 function getRandomImage(imageArray) {
